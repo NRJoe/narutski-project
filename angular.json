@@ -143,8 +143,13 @@
               "devServerTarget": "narutski-project:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "narutski-project"
 }
