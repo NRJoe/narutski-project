@@ -8,6 +8,7 @@ import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.componen
 import { BanksComponent } from './banks/banks.component';
 import { NewsComponent } from './news/news.component';
 import { ConverterComponent } from './converter/converter.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
  declarations: [
@@ -17,6 +18,7 @@ import { ConverterComponent } from './converter/converter.component';
   BanksComponent,
   NewsComponent,
   ConverterComponent,
+  AboutComponent,
  ],
  imports: [BrowserModule, AppRoutingModule],
  providers: [],
