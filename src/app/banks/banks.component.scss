@@ -1,0 +1,45 @@
+@import "src/app/app.component";
+.banks {
+    width: 65%;
+    margin: 0 auto;
+
+    &-container {
+        margin-top: 15px;
+        width: 100%;
+        .banks-head {
+            font-size: 25px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        .banks-list {
+            border-collapse: collapse;
+            .banks-list__row {
+                width: 100%;
+                &-head {
+                    background-color: rgb(225, 252, 225);
+                }
+            }
+        }
+    }
+}
+
+.banks-list__cell {
+    &-name {
+        width: 20%;
+    }
+    &-reg {
+        width: 15%;
+    }
+    &-ceo {
+        width: 10%;
+    }
+    &-adress {
+        width: 20%;
+    }
+    &-tel {
+        width: 20%;
+    }
+    &-site {
+        width: 15%;
+    }
+}

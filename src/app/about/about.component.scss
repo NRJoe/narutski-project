@@ -1,0 +1,22 @@
+.about {
+    width: 70%;
+    margin: 0 auto;
+    .about-container {
+        margin-top: 30px;
+        font-size: 35px;
+        .about__descr {
+            text-align: center;
+        }
+    }
+}
+
+.about-list {
+    .about-list__features,
+    .about-list__requirments {
+        font-weight: bold;
+        .about-list__item {
+            font-weight: 100;
+            list-style-type: decimal;
+        }
+    }
+}
