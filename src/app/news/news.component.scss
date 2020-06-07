@@ -1,0 +1,38 @@
+@import "src/app/app.component";
+
+.news {
+    width: 65%;
+    margin: 0 auto;
+    .news-container {
+        margin-top: 15px;
+        width: 90%;
+    }
+}
+
+.news-container-list {
+    @include flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .news-container-list__item {
+        width: 450px;
+        height: 250px;
+        list-style: none;
+        margin-bottom: 25px;
+        .news-container-list__item-link {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            font-weight: 500;
+            text-align: center;
+            .news-container-list__item__name {
+                height: 20%;
+                border: 2px solid black;
+            }
+            .news-container-list__item__pict {
+                height: 80%;
+                border: 2px solid black;
+            }
+        }
+    }
+}

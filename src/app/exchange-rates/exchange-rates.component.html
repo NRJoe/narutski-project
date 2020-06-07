@@ -1,1 +1,70 @@
-<p>exchange-rates works!</p>
+<div class="exch">
+    <div class="exch-container">
+        <div class="exch-head">Курсы валют</div>
+        <div class="exch-graph">Колебания курсов валют (графики)</div>
+        <div class="exch-rates">
+            <div class="exch-rates-head">Курсы валют на _____</div>
+            <div class="exch-rates-trigger">
+                <button class="exch-rates-trigger__button">НБРБ</button>
+                <button class="exch-rates-trigger__button">Банки</button>
+            </div>
+            <table class="exch-rates-list">
+                <tr class="exch-rates-list__row exch-rates-list__row-head">
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-name"
+                    >
+                        Валюта
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-exch-yester"
+                    >
+                        Курс вчера
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-exch-today"
+                    >
+                        Курс сегодня
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-code"
+                    >
+                        Код валюты
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-amount"
+                    >
+                        Количество
+                    </td>
+                </tr>
+                <!-- *ngFor="let bank of banks; let i = index" -->
+                <tr class="exch-rates-list__row">
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-name"
+                    >
+                        1
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-exch-yester"
+                    >
+                        2
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-exch-today"
+                    >
+                        3
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-code"
+                    >
+                        4
+                    </td>
+                    <td
+                        class="exch-rates-list__cell exch-rates-list__cell-amount"
+                    >
+                        5
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
