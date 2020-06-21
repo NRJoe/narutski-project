@@ -1,0 +1,31 @@
+@import "src/app/app.component";
+
+.banks-item {
+	width: 65%;
+	margin: 0 auto;
+	&-container {
+		margin: 15px 0;
+
+		width: 100%;
+		.banks-item-head {
+			text-align: center;
+			font-size: 30px;
+			font-weight: 700;
+		}
+		.banks-item-spec {
+			@include flex;
+			flex-direction: column;
+
+			.banks-item-spec__type {
+				background-color: rgb(185, 247, 255);
+				width: 100%;
+				text-align: center;
+				font-size: 25px;
+				font-weight: 500;
+			}
+			.banks-item-spec__content {
+				font-size: 20px;
+			}
+		}
+	}
+}

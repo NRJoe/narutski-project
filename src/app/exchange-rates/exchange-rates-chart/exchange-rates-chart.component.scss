@@ -1,0 +1,13 @@
+@import "src/app/app.component";
+
+.exch-rates-chart-container {
+	width: 40%;
+	margin: 0 auto;
+	.exch-rates-chart-trigger__button {
+		margin: 20px 0;
+		border: 0.5px solid rgb(197, 197, 197);
+		border-radius: 0;
+		width: 30%;
+		height: 25px;
+	}
+}

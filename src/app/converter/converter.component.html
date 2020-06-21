@@ -1,90 +1,120 @@
 <div class="converter">
-    <div class="converter-container">
-        <div class="converter__info">
-            На данной странице представлен универсальный конвертер валют. Этот
-            переводчик позволяет в режиме онлайн конвертировать доллары, евро и
-            другие востребованные валюты по курсу НБ РБ, а также по лучшему
-            курсу валют в Минске. <br />Для того, чтобы использовать калькулятор
-            онлайн валют, нужно просто заполнить поле интересующим показателем
-        </div>
-        <div class="converter__converters">
-            <div class="converter__nbrb">
-                По курсу НБРБ
-                <div class="converter__nbrb__descr">
-                    Официальный курс, устанавливаемый Национальным банком
-                    Республики Беларусь на _________
-                </div>
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">USD</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">EUR</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
+	<div class="converter-container">
+		<div class="converter__info">
+			На данной странице представлен универсальный конвертер валют. Этот
+			переводчик позволяет в режиме онлайн конвертировать доллары, евро и
+			другие востребованные валюты по курсу НБ РБ, а также по лучшему
+			курсу валют в Минске. <br />Для того, чтобы использовать калькулятор
+			онлайн валют, нужно просто заполнить поле интересующим показателем
+		</div>
+		<div class="converter__converters">
+			<div class="converter__nbrb">
+				По курсу НБРБ
+				<div class="converter__nbrb__descr">
+					Официальный курс, устанавливаемый Национальным банком
+					Республики Беларусь на _________
+				</div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">USD</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value=" valUsd | number:'1.0-4' "
+						[(ngModel)]="valUsd"
+						(ngModelChange)="converterUsd($event)"
+					/>
+				</div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">EUR</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="{{ valEur | number: '1.0-4' }}  "
+						[(ngModel)]="valEur"
+						(ngModelChange)="converterEur($event)"
+					/>
+				</div>
 
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">BYN</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">BYN</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="{{ valByn | number: '1.0-4' }}"
+						[(ngModel)]="valByn"
+						(ngModelChange)="converterByn($event)"
+					/>
+				</div>
 
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">RUB</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">RUB</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="{{ valRub | number: '1.0-4' }}"
+						[(ngModel)]="valRub"
+						(ngModelChange)="converterRub($event)"
+					/>
+				</div>
 
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">CNY</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
-            </div>
-            <div class="converter__banks">
-                По лучшему курсу в РБ
-                <div class="converter__banks-buttons">
-                    <button class="converter__banks-buttons__buy-sale">
-                        Банк покупает
-                    </button>
-                    <button class="converter__banks-buttons__buy-sale">
-                        Банк продает
-                    </button>
-                </div>
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">USD</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">UAH</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="{{ valUah | number: '1.0-4' }}"
+						[(ngModel)]="valUah"
+						(ngModelChange)="converterUah($event)"
+					/>
+				</div>
+			</div>
+			<div class="converter__banks">
+				По лучшему курсу в РБ
+				<div class="converter__banks-buttons">
+					<button class="converter__banks-buttons__buy-sale">
+						Банк покупает
+					</button>
+					<button class="converter__banks-buttons__buy-sale">
+						Банк продает
+					</button>
+				</div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">USD</div>
+					<input class="converter__nbrb__item__input" type="number" />
+				</div>
 
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">EUR</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">EUR</div>
+					<input class="converter__nbrb__item__input" type="number" />
+				</div>
 
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">BYN</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">BYN</div>
+					<input class="converter__nbrb__item__input" type="number" />
+				</div>
 
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">RUB</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">RUB</div>
+					<input class="converter__nbrb__item__input" type="number" />
+				</div>
 
-                <div class="converter__nbrb__item">
-                    <div class="converter__nbrb__item__text">CNY</div>
-                    <input class="converter__nbrb__item__input" type="text" />
-                </div>
-            </div>
-        </div>
-        <div class="converter__top-requests">
-            Популярные запросы
-            <div class="converter__top-requests-container">
-                <a href="/converter/usd-rub"> Доллар США к российскому рублю</a>
-                <a href="/converter/usd-byn">
-                    Доллар США к белорусскому рублю</a
-                >
-                <a href="/converter/usd-eur"> Доллар США к евро</a>
-                <a href="/converter/eur-rub"> Евро к российскому рублю</a>
-                <a href="/converter/eur-byn"> Евро к белорусскому рублю</a>
-            </div>
-        </div>
-    </div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">CNY</div>
+					<input class="converter__nbrb__item__input" type="number" />
+				</div>
+			</div>
+		</div>
+		<div class="converter__top-requests">
+			Популярные запросы
+			<div class="converter__top-requests-container">
+				<a href="/converter/usd-rub"> Доллар США к российскому рублю</a>
+				<a href="/converter/usd-byn">
+					Доллар США к белорусскому рублю</a
+				>
+				<a href="/converter/usd-eur"> Доллар США к евро</a>
+				<a href="/converter/eur-rub"> Евро к российскому рублю</a>
+				<a href="/converter/eur-byn"> Евро к белорусскому рублю</a>
+			</div>
+		</div>
+	</div>
 </div>

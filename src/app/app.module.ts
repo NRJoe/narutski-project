@@ -12,26 +12,46 @@ import { AboutComponent } from './about/about.component';
 import { ErrorComponent } from './error/error.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { DataService } from './services/data.service';
+import { BanksItemComponent } from 'src/app/banks/banks-item/banks-item.component';
+import { BanksService } from './services/banks.service';
+import { NewsItemComponent } from './news/news-item/news-item.component';
+import { NewsService } from './services/news.service';
+import { ExchangeRatesChartComponent } from './exchange-rates/exchange-rates-chart/exchange-rates-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
-    declarations: [
-        AppComponent,
-        MainPageComponent,
-        ExchangeRatesComponent,
-        BanksComponent,
-        NewsComponent,
-        ConverterComponent,
-        AboutComponent,
-        ErrorComponent,
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		MainPageComponent,
+		ExchangeRatesComponent,
+		BanksComponent,
+		NewsComponent,
+		ConverterComponent,
+		AboutComponent,
+		ErrorComponent,
+		BanksItemComponent,
+		NewsItemComponent,
+		ExchangeRatesChartComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		ReactiveFormsModule,
+		ChartsModule,
+		NgxPaginationModule,
+	],
+	providers: [
+		DataService,
+		BanksComponent,
+		NewsComponent,
+		BanksService,
+		NewsService,
+		ExchangeRatesComponent,
+		ExchangeRatesChartComponent,
+	],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

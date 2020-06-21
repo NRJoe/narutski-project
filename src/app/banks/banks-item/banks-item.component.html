@@ -1,0 +1,55 @@
+<div class="banks-item">
+	<div class="banks-item-container">
+		<div class="banks-item-head">Банки Беларуси</div>
+		<div class="banks-item-spec">
+			<div class="banks-item-spec__type">
+				Картинка
+			</div>
+			<div class="banks-item-spec__content">
+				11
+			</div>
+			<div class="banks-item-spec__type">
+				Полное наименование (сокращенное)
+			</div>
+			<div class="banks-item-spec__content">
+				{{ _banksService.banks[_banksService.currBankId].name }}
+			</div>
+			<div class="banks-item-spec__type">
+				Адрес
+			</div>
+			<div class="banks-item-spec__content">
+				{{ _banksService.banks[_banksService.currBankId].adress }}
+			</div>
+			<div class="banks-item-spec__type">
+				Ф.И.О. председателя
+			</div>
+			<div class="banks-item-spec__content">
+				{{ _banksService.banks[_banksService.currBankId].ceo }}
+			</div>
+			<div class="banks-item-spec__type">
+				Дата регистрации
+			</div>
+			<div class="banks-item-spec__content">
+				{{ _banksService.banks[_banksService.currBankId].reg }}
+			</div>
+			<div class="banks-item-spec__type">
+				Телефоны
+			</div>
+			<div class="banks-item-spec__content">
+				{{ _banksService.banks[_banksService.currBankId].tel }}
+			</div>
+			<div class="banks-item-spec__type">
+				Сайт
+			</div>
+			<div>
+				<a
+					class="banks-item-spec__type-id"
+					href="{{
+						_banksService.banks[_banksService.currBankId].site
+					}}"
+					>{{ _banksService.banks[_banksService.currBankId].site }}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

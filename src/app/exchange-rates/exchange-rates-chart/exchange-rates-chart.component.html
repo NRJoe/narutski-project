@@ -1,0 +1,31 @@
+<div class="exch-rates-chart-container">
+	<button
+		class="exch-rates-chart-trigger__button"
+		(click)="exchRatesDynamicUsd()"
+	>
+		Доллары
+	</button>
+	<button
+		class="exch-rates-chart-trigger__button"
+		(click)="exchRatesDynamicEur()"
+	>
+		Евро
+	</button>
+	<button
+		class="exch-rates-chart-trigger__button"
+		(click)="exchRatesDynamicRub()"
+	>
+		Российские рубли
+	</button>
+	<canvas
+		baseChart
+		[datasets]="lineChartData"
+		[labels]="lineChartLabels"
+		[options]="lineChartOptions"
+		[colors]="lineChartColors"
+		[legend]="lineChartLegend"
+		[chartType]="lineChartType"
+		[plugins]="lineChartPlugins"
+	>
+	</canvas>
+</div>

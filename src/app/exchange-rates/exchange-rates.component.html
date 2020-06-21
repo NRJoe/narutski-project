@@ -1,70 +1,103 @@
+<app-exchange-rates-chart></app-exchange-rates-chart>
 <div class="exch">
-    <div class="exch-container">
-        <div class="exch-head">Курсы валют</div>
-        <div class="exch-graph">Колебания курсов валют (графики)</div>
-        <div class="exch-rates">
-            <div class="exch-rates-head">Курсы валют на _____</div>
-            <div class="exch-rates-trigger">
-                <button class="exch-rates-trigger__button">НБРБ</button>
-                <button class="exch-rates-trigger__button">Банки</button>
-            </div>
-            <table class="exch-rates-list">
-                <tr class="exch-rates-list__row exch-rates-list__row-head">
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-name"
-                    >
-                        Валюта
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-exch-yester"
-                    >
-                        Курс вчера
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-exch-today"
-                    >
-                        Курс сегодня
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-code"
-                    >
-                        Код валюты
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-amount"
-                    >
-                        Количество
-                    </td>
-                </tr>
-                <!-- *ngFor="let bank of banks; let i = index" -->
-                <tr class="exch-rates-list__row">
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-name"
-                    >
-                        1
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-exch-yester"
-                    >
-                        2
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-exch-today"
-                    >
-                        3
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-code"
-                    >
-                        4
-                    </td>
-                    <td
-                        class="exch-rates-list__cell exch-rates-list__cell-amount"
-                    >
-                        5
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
+	<div class="exch-container">
+		<div class="exch-head">Курсы валют</div>
+		-->
+		<div class="exch-rates">
+			<div class="exch-rates-head">Курсы валют на _____</div>
+			<div class="exch-rates-trigger">
+				<button class="exch-rates-trigger__button" (click)="NBtoCB()">
+					НБРБ
+				</button>
+				<button class="exch-rates-trigger__button" (click)="NBtoCB()">
+					Банки
+				</button>
+			</div>
+			<table class="exch-rates-list" *ngIf="isNBRB">
+				<tr class="exch-rates-list__row exch-rates-list__row-head">
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-name"
+					>
+						Валюта
+					</td>
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-exch-today"
+					>
+						Курс сегодня
+					</td>
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-code"
+					>
+						Код валюты
+					</td>
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-amount"
+					>
+						Количество
+					</td>
+				</tr>
+				<tr
+					class="exch-rates-list__row"
+					*ngFor="let exchRate of exchRates; let i = index"
+				>
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-name"
+					>
+						{{ this.exchRate.Cur_Name }}
+					</td>
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-exch-today"
+					>
+						{{ this.exchRate.Cur_OfficialRate }}
+					</td>
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-code"
+					>
+						{{ this.exchRate.Cur_ID }}
+					</td>
+					<td
+						class="exch-rates-list__cell exch-rates-list__cell-amount"
+					>
+						{{ this.exchRate.Cur_Scale }}
+					</td>
+				</tr>
+			</table>
+			<table class="exch-rates-banks" *ngIf="!isNBRB">
+				<tr class="exch-rates-banks-head">
+					<td rowspan="2" class="exch-rates-banks-head__cell2">
+						Банк
+					</td>
+					<td colspan="2" class="exch-rates-banks-head__cell2">
+						USD
+					</td>
+					<td colspan="2" class="exch-rates-banks-head__cell2">
+						EUR
+					</td>
+					<td colspan="2" class="exch-rates-banks-head__cell2">
+						RUB
+					</td>
+				</tr>
+				<tr class="exch-rates-banks-head">
+					<td class="exch-rates-banks-head__cell">Покупка</td>
+					<td class="exch-rates-banks-head__cell">Продажа</td>
+					<td class="exch-rates-banks-head__cell">Покупка</td>
+					<td class="exch-rates-banks-head__cell">Продажа</td>
+					<td class="exch-rates-banks-head__cell">Покупка</td>
+					<td class="exch-rates-banks-head__cell">Продажа</td>
+				</tr>
+				<tr
+					class="exch-rates-banks-row"
+					*ngFor="let bank of _banksService.banks; let i = index"
+				>
+					<td class="exch-rates-banks-row__cell">{{ bank.name }}</td>
+					<td class="exch-rates-banks-row__cell">1</td>
+					<td class="exch-rates-banks-row__cell">2</td>
+					<td class="exch-rates-banks-row__cell">3</td>
+					<td class="exch-rates-banks-row__cell">4</td>
+					<td class="exch-rates-banks-row__cell">5</td>
+					<td class="exch-rates-banks-row__cell">6</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>

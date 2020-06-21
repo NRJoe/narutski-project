@@ -1,37 +1,27 @@
 <div class="news">
-    <div class="news-container">
-        <ul class="news-container-list">
-            <li class="news-container-list__item">
-                <a class="news-container-list__item-link" href="/news/id">
-                    <div class="news-container-list__item__name">название</div>
-                    <div class="news-container-list__item__pict">картинка</div>
-                </a>
-            </li>
-            <li class="news-container-list__item">
-                <a class="news-container-list__item-link" href="/news/id">
-                    <div class="news-container-list__item__name">название</div>
-                    <div class="news-container-list__item__pict">картинка</div>
-                </a>
-            </li>
-            <li class="news-container-list__item">
-                <a class="news-container-list__item-link" href="/news/id">
-                    <div class="news-container-list__item__name">название</div>
-                    <div class="news-container-list__item__pict">картинка</div>
-                </a>
-            </li>
-            <li class="news-container-list__item">
-                <a class="news-container-list__item-link" href="/news/id">
-                    <div class="news-container-list__item__name">название</div>
-                    <div class="news-container-list__item__pict">картинка</div>
-                </a>
-            </li>
-            <li class="news-container-list__item">
-                <a class="news-container-list__item-link" href="/news/id">
-                    <div class="news-container-list__item__name">название</div>
-                    <div class="news-container-list__item__pict">картинка</div>
-                </a>
-            </li>
-        </ul>
-    </div>
+	<div class="news-container">
+		<ul class="news-container-list">
+			<li
+				class="news-container-list__item"
+				*ngFor="let item of this.collection.data | paginate: { itemsPerPage: 10, currentPage: p }; let i = index"
+			>
+				<a
+					class="news-container-list__item-link"
+					[routerLink]="['/news', i]"
+				>
+					<div class="news-container-list__item__name">
+						{{ item.name_ru }}
+					</div>
+					<div class="news-container-list__item__pict">
+						<img
+							class="news-container-list__item__pict__img"
+							src="{{ item.img }}"
+						/>
+					</div>
+				</a>
+			</li>
+		</ul>
+		<!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+		<pagination-controls (pageChange)="p = $event"></pagination-controls>
+	</div>
 </div>
-<!-- li *ngFor="let news of newsList; let i = index" -->
