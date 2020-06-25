@@ -83,7 +83,8 @@
 				"serve": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"options": {
-						"browserTarget": "narutski-project:build"
+						"browserTarget": "narutski-project:build",
+						"proxyConfig": "src/proxy.conf.json"
 					},
 					"configurations": {
 						"production": {

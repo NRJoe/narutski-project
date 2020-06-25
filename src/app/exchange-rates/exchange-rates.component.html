@@ -62,42 +62,100 @@
 					</td>
 				</tr>
 			</table>
-			<table class="exch-rates-banks" *ngIf="!isNBRB">
-				<tr class="exch-rates-banks-head">
-					<td rowspan="2" class="exch-rates-banks-head__cell2">
+
+			<div class="exch-rates-banks" *ngIf="!isNBRB">
+				<div class="exch-rates-banks-head">
+					<div class="exch-rates-type-bank">
 						Банк
-					</td>
-					<td colspan="2" class="exch-rates-banks-head__cell2">
-						USD
-					</td>
-					<td colspan="2" class="exch-rates-banks-head__cell2">
-						EUR
-					</td>
-					<td colspan="2" class="exch-rates-banks-head__cell2">
-						RUB
-					</td>
-				</tr>
-				<tr class="exch-rates-banks-head">
-					<td class="exch-rates-banks-head__cell">Покупка</td>
-					<td class="exch-rates-banks-head__cell">Продажа</td>
-					<td class="exch-rates-banks-head__cell">Покупка</td>
-					<td class="exch-rates-banks-head__cell">Продажа</td>
-					<td class="exch-rates-banks-head__cell">Покупка</td>
-					<td class="exch-rates-banks-head__cell">Продажа</td>
-				</tr>
-				<tr
-					class="exch-rates-banks-row"
-					*ngFor="let bank of _banksService.banks; let i = index"
-				>
-					<td class="exch-rates-banks-row__cell">{{ bank.name }}</td>
-					<td class="exch-rates-banks-row__cell">1</td>
-					<td class="exch-rates-banks-row__cell">2</td>
-					<td class="exch-rates-banks-row__cell">3</td>
-					<td class="exch-rates-banks-row__cell">4</td>
-					<td class="exch-rates-banks-row__cell">5</td>
-					<td class="exch-rates-banks-row__cell">6</td>
-				</tr>
-			</table>
+					</div>
+					<div class="exch-rates-type-rates">
+						<div class="exch-rates-type-currency">
+							USD
+						</div>
+						<div class="exch-rates-type-rates-container">
+							<div class="exch-rates-type-buy">
+								Покупка
+							</div>
+							<div class="exch-rates-type-sell">
+								Продажа
+							</div>
+						</div>
+					</div>
+					<div class="exch-rates-type-rates">
+						<div class="exch-rates-type-currency">
+							EUR
+						</div>
+						<div class="exch-rates-type-rates-container">
+							<div class="exch-rates-type-buy">
+								Покупка
+							</div>
+							<div class="exch-rates-type-sell">
+								Продажа
+							</div>
+						</div>
+					</div>
+					<div class="exch-rates-type-rates">
+						<div class="exch-rates-type-currency">
+							RUB
+						</div>
+						<div class="exch-rates-type-rates-container">
+							<div class="exch-rates-type-buy">
+								Покупка
+							</div>
+							<div class="exch-rates-type-sell">
+								Продажа
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="exch-rates-banks-container">
+					<div class="exch-rates-banks-list-container">
+						<div
+							class="exch-rates-banks-list"
+							*ngFor="
+								let bank of _banksService.banksForRates;
+								let i = index
+							"
+						>
+							<img
+								class="exch-rates-banks-list-img"
+								src="{{ bank.pict }}"
+							/>
+							<div class="exch-rates-banks-list-name">
+								{{ bank.name }}
+							</div>
+						</div>
+					</div>
+					<div class="exch-rates-banks-rates">
+						<div
+							class="exch-rates-banks-rates2"
+							*ngFor="
+								let bankRate of _banksService.banksRates;
+								let i = index
+							"
+						>
+							<div class="exch-rates-banks-rates-rate">
+								{{ bankRate[0] | number: "0.3-3" }}
+							</div>
+							<div class="exch-rates-banks-rates-rate">
+								{{ bankRate[1] | number: "0.3-3" }}
+							</div>
+							<div class="exch-rates-banks-rates-rate">
+								{{ bankRate[2] | number: "0.3-3" }}
+							</div>
+							<div class="exch-rates-banks-rates-rate">
+								{{ bankRate[3] | number: "0.3-3" }}
+							</div>
+							<div class="exch-rates-banks-rates-rate">
+								{{ bankRate[4] | number: "0.3-3" }}
+							</div>
+							<div class="exch-rates-banks-rates-rate">
+								{{ bankRate[5] | number: "0.3-3" }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

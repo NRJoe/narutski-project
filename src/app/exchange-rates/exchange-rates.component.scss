@@ -53,3 +53,72 @@
 		}
 	}
 }
+
+.exch-rates-banks {
+	width: 65%;
+	margin: 0 auto;
+
+	.exch-rates-banks-head {
+		@include flex;
+		flex-direction: row;
+		.exch-rates-type-bank {
+			width: 40%;
+		}
+		.exch-rates-type-rates {
+			width: 20%;
+
+			.exch-rates-type-currency {
+				width: 100%;
+			}
+			.exch-rates-type-rates-container {
+				@include flex;
+				flex-direction: row;
+				.exch-rates-type-buy {
+					width: 50%;
+				}
+				.exch-rates-type-sell {
+					width: 50%;
+				}
+			}
+		}
+	}
+	.exch-rates-banks-container {
+		@include flex;
+		flex-direction: row;
+		.exch-rates-banks-list-container {
+			width: 40%;
+			@include flex;
+			flex-direction: column;
+			.exch-rates-banks-list {
+				width: 100%;
+				height: 50px;
+				@include flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+				.exch-rates-banks-list-img {
+					width: 70px;
+				}
+				.exch-rates-banks-list-name {
+					width: 70%;
+				}
+			}
+		}
+		.exch-rates-banks-rates {
+			width: 60%;
+
+			@include flex;
+			flex-direction: column;
+
+			.exch-rates-banks-rates2 {
+				width: 100%;
+				height: 50px;
+				@include flex;
+
+				flex-direction: row;
+				.exch-rates-banks-rates-rate {
+					width: 20%;
+				}
+			}
+		}
+	}
+}

@@ -6,4 +6,6 @@ export default class Banks {
 	public adress: string;
 	public tel: string;
 	public site: string;
+	public pict: string;
+	public rates?: string;
 }

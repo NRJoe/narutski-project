@@ -14,12 +14,13 @@
 					Официальный курс, устанавливаемый Национальным банком
 					Республики Беларусь на _________
 				</div>
+				/
 				<div class="converter__nbrb__item">
 					<div class="converter__nbrb__item__text">USD</div>
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value=" valUsd | number:'1.0-4' "
+						value=" valUsd"
 						[(ngModel)]="valUsd"
 						(ngModelChange)="converterUsd($event)"
 					/>
@@ -29,7 +30,7 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="{{ valEur | number: '1.0-4' }}  "
+						value="valEur"
 						[(ngModel)]="valEur"
 						(ngModelChange)="converterEur($event)"
 					/>
@@ -40,7 +41,7 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="{{ valByn | number: '1.0-4' }}"
+						value="valByn"
 						[(ngModel)]="valByn"
 						(ngModelChange)="converterByn($event)"
 					/>
@@ -51,7 +52,7 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="{{ valRub | number: '1.0-4' }}"
+						value="valRub"
 						[(ngModel)]="valRub"
 						(ngModelChange)="converterRub($event)"
 					/>
@@ -62,7 +63,7 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="{{ valUah | number: '1.0-4' }}"
+						value="valUah"
 						[(ngModel)]="valUah"
 						(ngModelChange)="converterUah($event)"
 					/>

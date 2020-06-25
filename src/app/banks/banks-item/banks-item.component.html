@@ -1,12 +1,12 @@
 <div class="banks-item">
 	<div class="banks-item-container">
-		<div class="banks-item-head">Банки Беларуси</div>
 		<div class="banks-item-spec">
-			<div class="banks-item-spec__type">
-				Картинка
-			</div>
 			<div class="banks-item-spec__content">
-				11
+				<img
+					src="{{
+						_banksService.banks[_banksService.currBankId].pict
+					}}"
+				/>
 			</div>
 			<div class="banks-item-spec__type">
 				Полное наименование (сокращенное)

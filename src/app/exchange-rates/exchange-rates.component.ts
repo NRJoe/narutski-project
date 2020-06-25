@@ -2,22 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../services/data.service';
 import { BanksService } from '../services/banks.service';
+import { NgxXml2jsonService } from 'ngx-xml2json';
 
 @Component({
 	selector: 'app-exchange-rates',
 	templateUrl: './exchange-rates.component.html',
 	styleUrls: ['./exchange-rates.component.scss'],
 })
-export class ExchangeRatesComponent {
+export class ExchangeRatesComponent implements OnInit {
 	public exchRates: any[] = [];
 	public exchRatesDynamic: any[] = [];
 	public exchRatesUsdDynamic: any[] = [];
 	public exchRatesEurDynamic: any[] = [];
 	public exchRatesRubDynamic: any[] = [];
-	public eurRates: object;
-	public uahRates: object;
-	public rubRates: object;
-	public usdRates: object;
+	public eurRates: any;
+	public uahRates: any;
+	public rubRates: any;
+	public usdRates: any;
 
 	public isNBRB: boolean = true;
 	public chart: any[];
@@ -29,10 +30,16 @@ export class ExchangeRatesComponent {
 
 	public currDynamicRate: any[] = this.exchRatesUsdDynamic;
 
+	public belarusbankRates: number[] = [];
+	public dabrabidRates: number[] = [];
+	public BAPBRates: number[] = [];
+	public alfaRates: number[] = [];
+
 	constructor(
 		private _httpClient: HttpClient,
 		private _dataService: DataService,
-		public _banksService: BanksService
+		public _banksService: BanksService,
+		private ngxXml2jsonService: NgxXml2jsonService
 	) {
 		this._dataService.loadExchRatesUsd().subscribe((usdRates: any[]) => {
 			this.usdRates = usdRates;
@@ -85,14 +92,96 @@ export class ExchangeRatesComponent {
 					this.exchRatesEurDynamic.push(rate.Cur_OfficialRate)
 				);
 			});
-		/////////////////////////////////////////////////////////////////////////////
-		// this._banksService
-		// 	.loadBelarusbankExchRatesUsd()
-		// 	.subscribe((Rates: any) => {
-		// 		_banksService.banksRates.push(Rates[0]);
-		// 		// console.log(_banksService.banksRates[0].USD_in);
-		// 		// console.log(_banksService.banks);
-		// 	});
+		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		this._banksService
+			.loadBelarusbankExchRatesBuySell()
+			.subscribe((Rates: any) => {
+				const belarusBankRatesParse: any = JSON.parse(Rates);
+				this.belarusbankRates.push(
+					+belarusBankRatesParse[0].USD_in,
+					+belarusBankRatesParse[0].USD_out,
+					+belarusBankRatesParse[0].EUR_in,
+					+belarusBankRatesParse[0].EUR_out,
+					+belarusBankRatesParse[0].RUB_in,
+					+belarusBankRatesParse[0].RUB_out
+				);
+				// _banksService.banksRates.push(this.belarusbankRates);
+				// console.log(this.belarusbankRates);
+			});
+		this._banksService
+			.loadDabrabidExchRatesBuySell()
+			.subscribe((Rates: any) => {
+				const parser: any = new DOMParser();
+				const xml: any = parser.parseFromString(
+					Rates.toString(),
+					'text/xml'
+				);
+				const DabrabidExchRatesBuySell: any = ngxXml2jsonService.xmlToJson(
+					xml
+				);
+				this.dabrabidRates.push(
+					+DabrabidExchRatesBuySell.root.filials.filial[4].rates
+						.value[0]['@attributes'].buy,
+					+DabrabidExchRatesBuySell.root.filials.filial[4].rates
+						.value[0]['@attributes'].sale,
+					+DabrabidExchRatesBuySell.root.filials.filial[4].rates
+						.value[1]['@attributes'].buy,
+					+DabrabidExchRatesBuySell.root.filials.filial[4].rates
+						.value[1]['@attributes'].sale,
+					+DabrabidExchRatesBuySell.root.filials.filial[4].rates
+						.value[2]['@attributes'].buy * 100,
+					+DabrabidExchRatesBuySell.root.filials.filial[4].rates
+						.value[2]['@attributes'].sale * 100
+				);
+				// _banksService.banksRates.push(this.dabrabidRates);
+				// console.log(this.dabrabidRates);
+			});
+
+		this._banksService
+			.loadBAPBExchRatesBuySell()
+			.subscribe((Rates: any) => {
+				const parser: any = new DOMParser();
+				const xml: any = parser.parseFromString(
+					Rates.toString(),
+					'text/xml'
+				);
+				const BAPBExchRatesBuySell: any = ngxXml2jsonService.xmlToJson(
+					xml
+				);
+				this.BAPBRates.push(
+					+BAPBExchRatesBuySell.DailyExRates.Currency[3].RateBuy,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[3].RateSell,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[2].RateBuy,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[2].RateSell,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[6].RateBuy,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[6].RateSell
+				);
+				// _banksService.banksRates.push(this.BAPBRates);
+				// console.log(this.BAPBRates);
+			});
+
+		this._banksService
+			.loadAlfabankExchRatesBuySell()
+			.subscribe((Rates: any) => {
+				const AlfabankRatesParse: any = JSON.parse(Rates);
+				this.alfaRates.push(
+					AlfabankRatesParse.rates[5].sellRate,
+					AlfabankRatesParse.rates[5].buyRate,
+					AlfabankRatesParse.rates[4].sellRate,
+					AlfabankRatesParse.rates[4].buyRate,
+					AlfabankRatesParse.rates[3].sellRate,
+					AlfabankRatesParse.rates[3].buyRate
+				);
+				// _banksService.banksRates.push(this.alfaRates);
+				// console.log(this.alfaRates);
+				// console.log(_banksService.banksRates);
+			});
+	}
+	public ngOnInit(): any {
+		this._banksService.banksRates.push(this.belarusbankRates);
+		this._banksService.banksRates.push(this.dabrabidRates);
+		this._banksService.banksRates.push(this.BAPBRates);
+		this._banksService.banksRates.push(this.alfaRates);
 	}
 
 	public NBtoCB(): void {

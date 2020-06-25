@@ -9,6 +9,9 @@ export class DataService {
 	public loadTodoList(): Observable<any> {
 		return this._httpClient.get('assets/banks.json');
 	}
+	public loadTodoList2(): Observable<any> {
+		return this._httpClient.get('assets/banksForRates.json');
+	}
 	public loadExchRatesUsd(): Observable<any> {
 		return this._httpClient.get(
 			'https://www.nbrb.by/api/exrates/rates/USD?parammode=2'
