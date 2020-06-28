@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
 export class DataService {
 	constructor(private _httpClient: HttpClient) {}
 
-	public loadTodoList(): Observable<any> {
+	public loadBanks(): Observable<any> {
 		return this._httpClient.get('assets/banks.json');
 	}
-	public loadTodoList2(): Observable<any> {
+	public loadBanksForRates(): Observable<any> {
 		return this._httpClient.get('assets/banksForRates.json');
 	}
 	public loadExchRatesUsd(): Observable<any> {

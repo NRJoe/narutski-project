@@ -4,18 +4,18 @@
 			<li
 				class="news-container-list__item"
 				*ngFor="
-					let item of this.belarusBankNews
+					let item of _newsService.news
 						| paginate
-							: { itemsPerPage: 10, currentPage: currentPage };
+							: {
+									itemsPerPage: 10,
+									currentPage: _newsService.currentPage
+							  };
 					let i = index
 				"
 			>
 				<a
 					class="news-container-list__item-link"
-					[routerLink]="[
-						'/news',
-						itemsPerPage * (currentPage - 1) + i
-					]"
+					[routerLink]="['/news', item.id]"
 				>
 					<div class="news-container-list__item__name">
 						{{ item.name_ru }}
@@ -30,7 +30,7 @@
 			</li>
 		</ul>
 		<pagination-controls
-			(pageChange)="currentPage = $event"
+			(pageChange)="_newsService.currentPage = $event"
 		></pagination-controls>
 	</div>
 </div>

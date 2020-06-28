@@ -4,9 +4,7 @@ import Banks from 'src/models/banks';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-@Injectable({
-	providedIn: 'root',
-})
+@Injectable()
 export class BanksService {
 	public banks: any[];
 	public banksForRates: any[];
@@ -17,12 +15,11 @@ export class BanksService {
 		public _dataService: DataService,
 		public _httpClient: HttpClient
 	) {
-		//////////////////////////////////////////////////////////////// Название
-		this._dataService.loadTodoList().subscribe((banks: Banks[]) => {
+		this._dataService.loadBanks().subscribe((banks: Banks[]) => {
 			this.banks = banks;
 		});
 		this._dataService
-			.loadTodoList2()
+			.loadBanksForRates()
 			.subscribe((banksForRates: Banks[]) => {
 				this.banksForRates = banksForRates;
 			});
@@ -51,12 +48,13 @@ export class BanksService {
 			}
 		);
 	}
+	////////////////////////////////////////////////////////////////////// убрать дату
 	public loadBAPBExchRatesBuySell(): Observable<any> {
 		const headers: any = new HttpHeaders({
 			'Access-Control-Allow-Origin': '*',
 		});
 		return this._httpClient.get(
-			'https://cors-anywhere.herokuapp.com/https://belapb.by/CashExRatesDaily.php',
+			'https://cors-anywhere.herokuapp.com/https://belapb.by/CashConvRatesDaily.php?ondate=06/26/2020',
 			{
 				responseType: 'text',
 				headers,

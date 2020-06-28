@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NewsComponent } from '../news.component';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
 	selector: 'app-news-item',
@@ -10,10 +10,9 @@ import { NewsComponent } from '../news.component';
 export class NewsItemComponent {
 	constructor(
 		public _activatedRoute: ActivatedRoute,
-		public _news: NewsComponent
+		public _news: NewsService
 	) {
 		this._activatedRoute.params.subscribe((params: any) => {
-			console.log(params);
 			_news.newsId = params.id;
 		});
 	}

@@ -1,15 +1,14 @@
 <div class="news-item">
 	<div class="news-item__head">
-		{{ _news.belarusBankNews[_news.newsId].name_ru }}
+		{{ _news.news[_news.newsId - 1].name_ru }}
 	</div>
 	<div class="news-item__pict">
 		<img
 			class="news-item__pict__img"
-			src="{{ _news.belarusBankNews[_news.newsId].img }}"
+			src="{{ _news.news[_news.newsId - 1].img }}"
 		/>
 	</div>
 	<div class="news-item__text">
-		{{ _news.belarusBankNews[_news.newsId].html_ru }}
+		{{ _news.news[_news.newsId - 1].html_ru }}
 	</div>
 </div>
- 

@@ -1,140 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ExchangeRatesComponent } from '../exchange-rates/exchange-rates.component';
-
+import { Component } from '@angular/core';
+import { BanksService } from '../services/banks.service';
+import { ExchangeRatesService } from '../services/exchange-rates.service';
+import { NbConverterService } from '../services/nb-converter.service';
+import { BanksConverterService } from '../services/banks-converter.service';
+import * as moment from 'moment';
 @Component({
 	selector: 'app-converter',
 	templateUrl: './converter.component.html',
 	styleUrls: ['./converter.component.scss'],
 })
 export class ConverterComponent {
-	public valUsd: number;
-	public valEur: number;
-	public valRub: number;
-	public valByn: number;
-	public valUah: number;
-	public numAfterComma: number = 3;
+	public todayDate: any = moment()
+		.locale('ru')
+		.format('Do MMMM YYYY, H:mm:ss');
 
-	constructor(public _exchangeRates: ExchangeRatesComponent) {}
-	public converterUsd(newValue: number): number {
-		this.valUsd = newValue;
-		console.log(this.valRub);
-		return (
-			(this.valEur = +(
-				this.valUsd *
-				(this._exchangeRates.usdRates.Cur_OfficialRate /
-					this._exchangeRates.eurRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valRub = +(
-				this.valUsd *
-				100 *
-				(this._exchangeRates.usdRates.Cur_OfficialRate /
-					this._exchangeRates.rubRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valByn = +(
-				this.valUsd * this._exchangeRates.usdRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma)),
-			(this.valUah = +(
-				this.valUsd *
-				100 *
-				(this._exchangeRates.usdRates.Cur_OfficialRate /
-					this._exchangeRates.uahRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma))
-		);
-	}
-
-	public converterEur(newValue: number): number {
-		this.valEur = newValue;
-		return (
-			(this.valUsd = +(
-				this.valEur *
-				(this._exchangeRates.eurRates.Cur_OfficialRate /
-					this._exchangeRates.usdRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valRub = +(
-				this.valEur *
-				100 *
-				(this._exchangeRates.eurRates.Cur_OfficialRate /
-					this._exchangeRates.rubRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valByn = +(
-				this.valEur * this._exchangeRates.eurRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma)),
-			(this.valUah = +(
-				this.valEur *
-				100 *
-				(this._exchangeRates.eurRates.Cur_OfficialRate /
-					this._exchangeRates.uahRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma))
-		);
-	}
-
-	public converterRub(newValue: number): number {
-		this.valRub = newValue;
-		return (
-			(this.valUsd = +(
-				(this.valRub / 100) *
-				(this._exchangeRates.rubRates.Cur_OfficialRate /
-					this._exchangeRates.usdRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valEur = +(
-				(this.valRub / 100) *
-				(this._exchangeRates.rubRates.Cur_OfficialRate /
-					this._exchangeRates.eurRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valByn = +(
-				(this.valRub / 100) *
-				this._exchangeRates.rubRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma)),
-			(this.valUah = +(
-				this.valRub *
-				(this._exchangeRates.rubRates.Cur_OfficialRate /
-					this._exchangeRates.uahRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma))
-		);
-	}
-
-	public converterByn(newValue: number): number {
-		this.valByn = newValue;
-		return (
-			(this.valUsd = +(
-				this.valByn / this._exchangeRates.usdRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma)),
-			(this.valRub = +(
-				(this.valByn * 100) /
-				this._exchangeRates.rubRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma)),
-			(this.valEur = +(
-				this.valByn / this._exchangeRates.eurRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma)),
-			(this.valUah = +(
-				(this.valByn * 100) /
-				this._exchangeRates.uahRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma))
-		);
-	}
-
-	public converterUah(newValue: number): number {
-		this.valUah = newValue;
-		return (
-			(this.valUsd = +(
-				(this.valUah / 100) *
-				(this._exchangeRates.uahRates.Cur_OfficialRate /
-					this._exchangeRates.usdRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valRub = +(
-				this.valUah *
-				(this._exchangeRates.uahRates.Cur_OfficialRate /
-					this._exchangeRates.rubRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma)),
-			(this.valByn = +(
-				(this.valUah / 100) *
-				this._exchangeRates.uahRates.Cur_OfficialRate
-			).toFixed(this.numAfterComma)),
-			(this.valEur = +(
-				(this.valUah / 100) *
-				(this._exchangeRates.uahRates.Cur_OfficialRate /
-					this._exchangeRates.eurRates.Cur_OfficialRate)
-			).toFixed(this.numAfterComma))
-		);
-	}
+	constructor(
+		public _exchangeRatesService: ExchangeRatesService,
+		public _banksService: BanksService,
+		public _nbConverterService: NbConverterService,
+		public _banksConverterService: BanksConverterService
+	) {}
 }

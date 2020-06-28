@@ -12,17 +12,18 @@
 				По курсу НБРБ
 				<div class="converter__nbrb__descr">
 					Официальный курс, устанавливаемый Национальным банком
-					Республики Беларусь на _________
+					Республики Беларусь на {{ this.todayDate }}
 				</div>
-				/
 				<div class="converter__nbrb__item">
 					<div class="converter__nbrb__item__text">USD</div>
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value=" valUsd"
-						[(ngModel)]="valUsd"
-						(ngModelChange)="converterUsd($event)"
+						value="_nbConverterService.valUsd"
+						[(ngModel)]="_nbConverterService.valUsd"
+						(ngModelChange)="
+							_nbConverterService.converterUsd($event)
+						"
 					/>
 				</div>
 				<div class="converter__nbrb__item">
@@ -30,9 +31,11 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="valEur"
-						[(ngModel)]="valEur"
-						(ngModelChange)="converterEur($event)"
+						value="_nbConverterService.valEur"
+						[(ngModel)]="_nbConverterService.valEur"
+						(ngModelChange)="
+							_nbConverterService.converterEur($event)
+						"
 					/>
 				</div>
 
@@ -41,9 +44,11 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="valByn"
-						[(ngModel)]="valByn"
-						(ngModelChange)="converterByn($event)"
+						value="_nbConverterService.valByn"
+						[(ngModel)]="_nbConverterService.valByn"
+						(ngModelChange)="
+							_nbConverterService.converterByn($event)
+						"
 					/>
 				</div>
 
@@ -52,9 +57,11 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="valRub"
-						[(ngModel)]="valRub"
-						(ngModelChange)="converterRub($event)"
+						value="_nbConverterService.valRub"
+						[(ngModel)]="_nbConverterService.valRub"
+						(ngModelChange)="
+							_nbConverterService.converterRub($event)
+						"
 					/>
 				</div>
 
@@ -63,49 +70,159 @@
 					<input
 						class="converter__nbrb__item__input"
 						type="number"
-						value="valUah"
-						[(ngModel)]="valUah"
-						(ngModelChange)="converterUah($event)"
+						value="_nbConverterService.valUah"
+						[(ngModel)]="_nbConverterService.valUah"
+						(ngModelChange)="
+							_nbConverterService.converterUah($event)
+						"
 					/>
 				</div>
 			</div>
-			<div class="converter__banks">
+			<div
+				class="converter__banks"
+				*ngIf="_banksConverterService.banksBuy"
+			>
 				По лучшему курсу в РБ
 				<div class="converter__banks-buttons">
-					<button class="converter__banks-buttons__buy-sale">
+					<button
+						class="converter__banks-buttons__buy-sale"
+						(click)="_banksConverterService.sellToBuy()"
+					>
 						Банк покупает
 					</button>
-					<button class="converter__banks-buttons__buy-sale">
+					<button
+						class="converter__banks-buttons__buy-sale"
+						(click)="_banksConverterService.sellToBuy()"
+					>
 						Банк продает
 					</button>
 				</div>
 				<div class="converter__nbrb__item">
 					<div class="converter__nbrb__item__text">USD</div>
-					<input class="converter__nbrb__item__input" type="number" />
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valUsdBuySell"
+						[(ngModel)]="_banksConverterService.valUsdBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterUsdBuy($event)
+						"
+					/>
 				</div>
 
 				<div class="converter__nbrb__item">
 					<div class="converter__nbrb__item__text">EUR</div>
-					<input class="converter__nbrb__item__input" type="number" />
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valEurBuySell"
+						[(ngModel)]="_banksConverterService.valEurBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterEurBuy($event)
+						"
+					/>
 				</div>
 
 				<div class="converter__nbrb__item">
 					<div class="converter__nbrb__item__text">BYN</div>
-					<input class="converter__nbrb__item__input" type="number" />
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valBynBuySell"
+						[(ngModel)]="_banksConverterService.valBynBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterBynBuy($event)
+						"
+					/>
 				</div>
 
 				<div class="converter__nbrb__item">
 					<div class="converter__nbrb__item__text">RUB</div>
-					<input class="converter__nbrb__item__input" type="number" />
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valRubBuySell"
+						[(ngModel)]="_banksConverterService.valRubBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterRubBuy($event)
+						"
+					/>
+				</div>
+			</div>
+			<div
+				class="converter__banks"
+				*ngIf="!_banksConverterService.banksBuy"
+			>
+				По лучшему курсу в РБ
+				<div class="converter__banks-buttons">
+					<button
+						class="converter__banks-buttons__buy-sale"
+						(click)="_banksConverterService.sellToBuy()"
+					>
+						Банк покупает
+					</button>
+					<button
+						class="converter__banks-buttons__buy-sale"
+						(click)="_banksConverterService.sellToBuy()"
+					>
+						Банк продает
+					</button>
+				</div>
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">USD</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valUsdBuySell"
+						[(ngModel)]="_banksConverterService.valUsdBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterUsdSell($event)
+						"
+					/>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">CNY</div>
-					<input class="converter__nbrb__item__input" type="number" />
+					<div class="converter__nbrb__item__text">EUR</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valEurBuySell"
+						[(ngModel)]="_banksConverterService.valEurBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterEurSell($event)
+						"
+					/>
+				</div>
+
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">BYN</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valBynBuySell"
+						[(ngModel)]="_banksConverterService.valBynBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterBynSell($event)
+						"
+					/>
+				</div>
+
+				<div class="converter__nbrb__item">
+					<div class="converter__nbrb__item__text">RUB</div>
+					<input
+						class="converter__nbrb__item__input"
+						type="number"
+						value="_banksConverterService.valRubBuySell"
+						[(ngModel)]="_banksConverterService.valRubBuySell"
+						(ngModelChange)="
+							_banksConverterService.converterRubSell($event)
+						"
+					/>
 				</div>
 			</div>
 		</div>
-		<div class="converter__top-requests">
+
+		<!-- <div class="converter__top-requests">
 			Популярные запросы
 			<div class="converter__top-requests-container">
 				<a href="/converter/usd-rub"> Доллар США к российскому рублю</a>
@@ -116,6 +233,6 @@
 				<a href="/converter/eur-rub"> Евро к российскому рублю</a>
 				<a href="/converter/eur-byn"> Евро к белорусскому рублю</a>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>

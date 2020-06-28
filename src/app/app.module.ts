@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.component';
 import { BanksComponent } from './banks/banks.component';
 import { NewsComponent } from './news/news.component';
@@ -20,10 +18,12 @@ import { NewsService } from './services/news.service';
 import { ExchangeRatesChartComponent } from './exchange-rates/exchange-rates-chart/exchange-rates-chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ExchangeRatesService } from './services/exchange-rates.service';
+import { NbConverterService } from './services/nb-converter.service';
+import { BanksConverterService } from './services/banks-converter.service';
 @NgModule({
 	declarations: [
 		AppComponent,
-		MainPageComponent,
 		ExchangeRatesComponent,
 		BanksComponent,
 		NewsComponent,
@@ -48,7 +48,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 		BanksComponent,
 		NewsComponent,
 		BanksService,
+		NbConverterService,
+		BanksConverterService,
 		NewsService,
+		ExchangeRatesService,
 		ExchangeRatesComponent,
 		ExchangeRatesChartComponent,
 	],
