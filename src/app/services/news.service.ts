@@ -23,6 +23,7 @@ export class NewsService {
 				bbnews.class = 'belarusBank';
 			}
 			this.news.push(...this.belarusBankNews);
+			console.log(this.news[1].class === 'belarusBank');
 		});
 		this.loadBAPBNews().subscribe((BAPBNews: any) => {
 			this.BAPBNews = BAPBNews;

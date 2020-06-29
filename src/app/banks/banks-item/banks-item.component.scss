@@ -17,7 +17,7 @@
 			flex-direction: column;
 
 			.banks-item-spec__type {
-				background-color: rgb(185, 247, 255);
+				background-color: rgb(225, 252, 225);
 				width: 100%;
 				text-align: center;
 				font-size: 25px;
@@ -25,6 +25,11 @@
 			}
 			.banks-item-spec__content {
 				font-size: 20px;
+				.banks-item-spec__content-id {
+					color: black;
+					text-decoration: none;
+					border-bottom: dashed green 0.5px;
+				}
 			}
 		}
 	}

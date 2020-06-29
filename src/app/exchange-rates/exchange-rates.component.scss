@@ -9,7 +9,8 @@
 		.exch-head {
 			font-size: 25px;
 			font-weight: 700;
-			margin: 10px 0;
+			margin: 10px auto;
+			text-align: center;
 		}
 		.exch-graph {
 			height: 380px;
@@ -19,18 +20,41 @@
 		.exch-rates-head {
 			font-size: 20px;
 			font-weight: 700;
+			text-align: center;
+		}
+		.exch-rates-trigger {
+			margin-top: 15px;
+			.exch-rates-trigger__button {
+				background-color: white;
+				border: 0.5px solid rgb(197, 197, 197);
+				border-radius: 4px;
+				width: 50%;
+				height: 25px;
+				cursor: pointer;
+				text-transform: uppercase;
+				font-size: 13px;
+				font-weight: 700;
+			}
 		}
 		.exch-rates-list {
 			width: 100%;
+			margin-top: 15px;
 			border-collapse: collapse;
 			.exch-rates-list__row {
+				margin: 25px;
+				height: 50px;
+				border-bottom: 1px solid green;
 				width: 100%;
+				user-select: none;
 				.exch-rates-list__cell {
 					width: 20%;
 				}
 				&-head {
 					background-color: rgb(225, 252, 225);
 				}
+			}
+			.exch-rates-list__row:hover {
+				background-color: rgb(225, 252, 225);
 			}
 		}
 	}
@@ -55,18 +79,20 @@
 }
 
 .exch-rates-banks {
-	width: 65%;
-	margin: 0 auto;
+	width: 100%;
+	margin: 15px auto;
 
 	.exch-rates-banks-head {
 		@include flex;
 		flex-direction: row;
+		background-color: rgb(225, 252, 225);
 		.exch-rates-type-bank {
 			width: 40%;
+			text-align: center;
 		}
 		.exch-rates-type-rates {
 			width: 20%;
-
+			text-align: center;
 			.exch-rates-type-currency {
 				width: 100%;
 			}
@@ -92,6 +118,11 @@
 			.exch-rates-banks-list {
 				width: 100%;
 				height: 50px;
+				margin: 25px;
+				height: 50px;
+				border-bottom: 1px solid green;
+				width: 100%;
+				user-select: none;
 				@include flex;
 				flex-direction: row;
 				justify-content: space-evenly;
@@ -113,11 +144,20 @@
 				width: 100%;
 				height: 50px;
 				@include flex;
+				margin: 25px;
+				height: 50px;
+				border-bottom: 1px solid green;
+				width: 100%;
+				user-select: none;
 
 				flex-direction: row;
 				.exch-rates-banks-rates-rate {
 					width: 20%;
+					text-align: center;
 				}
+			}
+			.exch-rates-banks-rates2:hover {
+				background-color: rgb(225, 252, 225);
 			}
 		}
 	}

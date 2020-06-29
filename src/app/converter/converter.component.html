@@ -82,7 +82,8 @@
 				class="converter__banks"
 				*ngIf="_banksConverterService.banksBuy"
 			>
-				По лучшему курсу в РБ
+				По лучшему курсу в РБ <br>
+				(курс покупки)
 				<div class="converter__banks-buttons">
 					<button
 						class="converter__banks-buttons__buy-sale"
@@ -153,7 +154,8 @@
 				class="converter__banks"
 				*ngIf="!_banksConverterService.banksBuy"
 			>
-				По лучшему курсу в РБ
+				По лучшему курсу в РБ <br>
+				(курс продажи)
 				<div class="converter__banks-buttons">
 					<button
 						class="converter__banks-buttons__buy-sale"

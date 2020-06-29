@@ -13,6 +13,24 @@
 					let i = index
 				"
 			>
+				<div
+					class="news-container-list__item-type"
+					*ngIf="
+						this._newsService.news[i].class === 'belAgroPromBank'
+					"
+				>
+					<div class="news-container-list__item-type__text">
+						БелАгроПромБанк
+					</div>
+				</div>
+				<div
+					class="news-container-list__item-type"
+					*ngIf="this._newsService.news[i].class === 'belarusBank'"
+				>
+					<div class="news-container-list__item-type__text">
+						Беларусбанк
+					</div>
+				</div>
 				<a
 					class="news-container-list__item-link"
 					[routerLink]="['/news', item.id]"
@@ -30,7 +48,11 @@
 			</li>
 		</ul>
 		<pagination-controls
+			class="news-container__pagination"
 			(pageChange)="_newsService.currentPage = $event"
+			previousLabel="Предыдущая"
+			nextLabel="Следующая"
+			responsive="true"
 		></pagination-controls>
 	</div>
 </div>

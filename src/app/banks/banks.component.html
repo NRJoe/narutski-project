@@ -4,7 +4,7 @@
 		<table class="banks-list">
 			<tr class="banks-list__row banks-list__row-head">
 				<td class="banks-list__cell banks-list__cell-name">
-					Полное наименование (сокращенное)
+					Наименование банка
 				</td>
 				<td class="banks-list__cell banks-list__cell-adress">Адрес</td>
 				<td class="banks-list__cell banks-list__cell-tel">Телефоны</td>
@@ -16,7 +16,7 @@
 			>
 				<td class="banks-list__cell banks-list__cell-name">
 					<a
-						class="todo-list-item__id"
+						class="banks-list__cell banks-list__cell-name__link"
 						[routerLink]="['/banks', bank.id]"
 					>
 						{{ bank.name }}
@@ -29,7 +29,10 @@
 					{{ bank.tel }}
 				</td>
 				<td class="banks-list__cell banks-list__cell-site">
-					<a class="todo-list-item__id" href="{{ bank.site }}">
+					<a
+						class="banks-list__cell banks-list__cell-site__link"
+						href="{{ bank.site }}"
+					>
 						{{ bank.site }}
 					</a>
 				</td>

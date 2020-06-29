@@ -1,10 +1,10 @@
-<app-exchange-rates-chart></app-exchange-rates-chart>
 <div class="exch">
 	<div class="exch-container">
 		<div class="exch-head">Курсы валют</div>
-		-->
 		<div class="exch-rates">
-			<div class="exch-rates-head">Курсы валют на _____</div>
+			<div class="exch-rates-head">
+				Курсы валют на {{ this.todayDate }}
+			</div>
 			<div class="exch-rates-trigger">
 				<button
 					class="exch-rates-trigger__button"
@@ -120,7 +120,7 @@
 				<div class="exch-rates-banks-container">
 					<div class="exch-rates-banks-list-container">
 						<div
-							class="exch-rates-banks-list"
+							class="exch-rates-banks-list exch-rates-banks-hover"
 							*ngFor="
 								let bank of _banksService.banksForRates;
 								let i = index
@@ -137,7 +137,7 @@
 					</div>
 					<div class="exch-rates-banks-rates">
 						<div
-							class="exch-rates-banks-rates2"
+							class="exch-rates-banks-rates2 exch-rates-banks-hover"
 							*ngFor="
 								let bankRate of _banksService.banksRates;
 								let i = index
@@ -168,3 +168,4 @@
 		</div>
 	</div>
 </div>
+<app-exchange-rates-chart></app-exchange-rates-chart>
