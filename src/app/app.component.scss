@@ -1,6 +1,7 @@
 $burgerWidth: 29px;
 $burgerBarHeight: 2px;
 $burgerBarColor: #333;
+$mainBackgroundcolor: rgb(225, 252, 225);
 
 @mixin border {
 	border: none;
@@ -23,7 +24,7 @@ $burgerBarColor: #333;
 	padding: 0px;
 }
 .nav {
-	background-color: rgb(225, 252, 225);
+	background-color: $mainBackgroundcolor;
 	height: 40px;
 	position: sticky;
 	top: 0px;
@@ -104,9 +105,7 @@ $burgerBarColor: #333;
 							width: 100%;
 							height: 1024px;
 							margin-top: 15px;
-
-							background-color: rgb(225, 252, 225);
-
+							background-color: $mainBackgroundcolor;
 							.header__link {
 								text-align: center;
 								margin: 50px 0;

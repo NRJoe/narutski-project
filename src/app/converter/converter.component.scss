@@ -31,7 +31,7 @@
 		text-align: center;
 		line-height: 35px;
 		padding: 10px;
-		background-color: rgb(225, 252, 225);
+		background-color: $mainBackgroundcolor;
 		border-radius: 3px;
 		.converter__nbrb__descr {
 			height: 80px;
@@ -70,7 +70,7 @@
 	margin: 0 auto;
 	width: 520px;
 	margin-top: 25px;
-	background-color: rgb(225, 252, 225);
+	background-color: $mainBackgroundcolor;
 
 	.converter__nbrb__item-container {
 		@include flex;
@@ -153,7 +153,7 @@
 		margin: 0 auto;
 		width: 420px;
 		margin-top: 25px;
-		background-color: rgb(225, 252, 225);
+		background-color: $mainBackgroundcolor;
 		.converter__nbrb__item__input-container {
 			width: 300px;
 			.converter__nbrb__item__input {
@@ -229,8 +229,6 @@
 					}
 					.converter__nbrb__select {
 						font-size: 15px;
-						.converter__nbrb__select__option {
-						}
 					}
 				}
 			}
@@ -249,7 +247,6 @@
 			}
 		}
 	}
-
 	.converter__converters {
 		@include flex;
 		flex-direction: column;
@@ -267,7 +264,6 @@
 			}
 		}
 	}
-
 	.converter__nbrb__item {
 		@include flex;
 		justify-content: center;

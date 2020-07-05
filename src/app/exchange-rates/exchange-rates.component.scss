@@ -38,7 +38,7 @@
 			}
 			.exch-rates-trigger__button:hover,
 			.exch-rates-trigger__button:focus {
-				background-color: rgb(225, 252, 225);
+				background-color: $mainBackgroundcolor;
 			}
 		}
 		.exch-rates-list {
@@ -56,11 +56,11 @@
 					font-size: 22px;
 				}
 				&-head {
-					background-color: rgb(225, 252, 225);
+					background-color: $mainBackgroundcolor;
 				}
 			}
 			.exch-rates-list__row:hover {
-				background-color: rgb(225, 252, 225);
+				background-color: $mainBackgroundcolor;
 			}
 		}
 	}
@@ -91,7 +91,7 @@
 	.exch-rates-banks-head {
 		@include flex;
 		flex-direction: row;
-		background-color: rgb(225, 252, 225);
+		background-color: $mainBackgroundcolor;
 		.exch-rates-type__bank {
 			width: 40%;
 			font-size: 22px;
@@ -167,7 +167,7 @@
 			}
 			.exch-rates-banks-rates2:hover,
 			.exch-rates-banks-rates2:focus {
-				background-color: rgb(225, 252, 225);
+				background-color: $mainBackgroundcolor;
 			}
 		}
 	}
@@ -214,94 +214,71 @@
 	.exch-rates-banks-list__img {
 		display: none;
 	}
-	.exch {
-		.exch-container {
-			.exch-rates {
-				.exch-rates-banks {
-					.exch-rates-banks-head {
-						width: 100%;
-						.exch-rates-type__bank {
-							width: 20%;
-						}
-						.exch-rates-type-rates {
-							width: 27%;
-						}
-					}
-					.exch-rates-banks-container {
-						width: 100%;
-
-						.exch-rates-banks-list-container {
-							width: 19%;
-
-							.exch-rates-banks-list {
-								.exch-rates-banks-list__name {
-									font-size: 12px;
-									width: 100%;
-									margin: 0;
-									word-break: break-all;
-								}
-							}
-						}
-						.exch-rates-banks-rates {
-							width: 80%;
-
-							.exch-rates-banks-rates2 {
-								.exch-rates-banks-rates-rate {
-									width: 20%;
-									text-align: center;
-									font-size: 16px;
-								}
-							}
-						}
-					}
+	.exch-rates-banks-head {
+		width: 100%;
+		.exch-rates-type__bank {
+			width: 20%;
+		}
+		.exch-rates-type-rates {
+			width: 27%;
+		}
+	}
+	.exch-rates-banks-container {
+		width: 100%;
+		.exch-rates-banks-list-container {
+			width: 19%;
+			.exch-rates-banks-list {
+				.exch-rates-banks-list__name {
+					font-size: 12px;
+					width: 100%;
+					margin: 0;
+					word-break: break-all;
+				}
+			}
+		}
+		.exch-rates-banks-rates {
+			width: 80%;
+			.exch-rates-banks-rates2 {
+				.exch-rates-banks-rates-rate {
+					width: 20%;
+					text-align: center;
+					font-size: 16px;
 				}
 			}
 		}
 	}
 }
+
 @media all and (max-width: 500px) {
-	.exch {
-		.exch-container {
-			.exch-rates {
-				.exch-rates-banks {
-					.exch-rates-banks-head {
-						.exch-rates-type__bank {
-							font-size: 15px;
-						}
-						.exch-rates-type-rates {
-							font-size: 12px;
-							width: 27%;
-						}
-					}
-					.exch-rates-banks-container {
-						width: 100%;
+	.exch-rates-type__bank {
+		font-size: 15px;
+	}
+	.exch-rates-type-rates {
+		font-size: 12px;
+		width: 27%;
+	}
 
-						.exch-rates-banks-list-container {
-							width: 19%;
+	.exch-rates-banks-container {
+		width: 100%;
+	}
+	.exch-rates-banks-list-container {
+		width: 19%;
+	}
 
-							.exch-rates-banks-list {
-								.exch-rates-banks-list__img {
-									display: inline;
-								}
-								.exch-rates-banks-list__name {
-									display: none;
-								}
-							}
-						}
-						.exch-rates-banks-rates {
-							width: 80%;
+	.exch-rates-banks-list__img {
+		display: inline;
+	}
+	.exch-rates-banks-list__name {
+		display: none;
+	}
 
-							.exch-rates-banks-rates2 {
-								.exch-rates-banks-rates-rate {
-									width: 20%;
-									text-align: center;
-									font-size: 13px;
-								}
-							}
-						}
-					}
-				}
-			}
+	.exch-rates-banks-rates {
+		width: 80%;
+
+		.exch-rates-banks-rates-rate {
+			width: 20%;
+			text-align: center;
+			font-size: 13px;
 		}
 	}
 	.exch {
