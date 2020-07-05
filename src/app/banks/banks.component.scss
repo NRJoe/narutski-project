@@ -23,11 +23,11 @@
 				user-select: none;
 
 				&-head {
-					background-color: rgb(225, 252, 225);
+					background-color: $mainBackgroundcolor;
 				}
 			}
 			.banks-list__row:hover {
-				background-color: rgb(225, 252, 225);
+				background-color: rgb(161, 161, 161);
 			}
 		}
 	}
@@ -70,7 +70,8 @@
 
 @media all and (max-width: 1400px) {
 	.banks-list__cell {
-		font-size: 14px; }
+		font-size: 14px;
+	}
 }
 
 @media all and (max-width: 1100px) {
