@@ -7,7 +7,7 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 @Injectable({
 	providedIn: 'root',
 })
-export class ExchangeRatesService implements OnInit {
+export class ExchangeRatesService {
 	public exchRates: any[] = [];
 	public exchRatesDynamic: any[] = [];
 	public exchRatesUsdDynamic: any[] = [];
@@ -17,14 +17,24 @@ export class ExchangeRatesService implements OnInit {
 	public uahRates: any;
 	public rubRates: any;
 	public usdRates: any;
+	public cnyRates: any;
+	public gbpRates: any;
+	public jpyRates: any;
+	public plnRates: any;
+	public kztRates: any;
 
 	public isNBRB: boolean = true;
 	public chart: any[];
 	public days: any[] = [];
+	public daysYear: any[] = [];
 
 	public usdDynamic: any[] = [];
 	public rubDynamic: any[] = [];
 	public eurDynamic: any[] = [];
+
+	public usdDynamicYear: any[] = [];
+	public rubDynamicYear: any[] = [];
+	public eurDynamicYear: any[] = [];
 
 	public currDynamicRate: any[] = this.exchRatesUsdDynamic;
 
@@ -62,6 +72,26 @@ export class ExchangeRatesService implements OnInit {
 			this.eurRates = eurRates;
 			this.exchRates.push(this.eurRates);
 		});
+		this._dataService.loadExchRatesCny().subscribe((cnyRates: any[]) => {
+			this.cnyRates = cnyRates;
+			this.exchRates.push(this.cnyRates);
+		});
+		this._dataService.loadExchRatesGbp().subscribe((gbpRates: any[]) => {
+			this.gbpRates = gbpRates;
+			this.exchRates.push(this.gbpRates);
+		});
+		this._dataService.loadExchRatesJpy().subscribe((jpyRates: any[]) => {
+			this.jpyRates = jpyRates;
+			this.exchRates.push(this.jpyRates);
+		});
+		this._dataService.loadExchRatesPln().subscribe((plnRates: any[]) => {
+			this.plnRates = plnRates;
+			this.exchRates.push(this.plnRates);
+		});
+		this._dataService.loadExchRatesKzt().subscribe((kztRates: any[]) => {
+			this.kztRates = kztRates;
+			this.exchRates.push(this.kztRates);
+		});
 
 		this._dataService
 			.loadExchRatesUsdDynamic()
@@ -71,7 +101,6 @@ export class ExchangeRatesService implements OnInit {
 					this.exchRatesUsdDynamic.push(rate.Cur_OfficialRate)
 				);
 			});
-		////////////////////////////////////////////////////////////////
 		this._dataService
 			.loadExchRatesUsdDynamic()
 			.subscribe((UsdDynamic: any[]) => {
@@ -96,7 +125,34 @@ export class ExchangeRatesService implements OnInit {
 					this.exchRatesEurDynamic.push(rate.Cur_OfficialRate)
 				);
 			});
-		/////////////////////////////////////////////////////////////////////////////////////////////////////
+		this._dataService
+			.loadExchRatesUsdDynamicYear()
+			.subscribe((UsdDynamicYear: any[]) => {
+				UsdDynamicYear.map((rate: any) => {
+					if (rate.Date.slice(8, 10) === `01`) {
+						this.usdDynamicYear.push(rate.Cur_OfficialRate);
+						this.daysYear.push(rate.Date.slice(0, 10));
+					}
+				});
+			});
+		this._dataService
+			.loadExchRatesRubDynamicYear()
+			.subscribe((RubDynamicYear: any[]) => {
+				RubDynamicYear.map((rate: any) => {
+					if (rate.Date.slice(8, 10) === `01`) {
+						this.rubDynamicYear.push(rate.Cur_OfficialRate);
+					}
+				});
+			});
+		this._dataService
+			.loadExchRatesEurDynamicYear()
+			.subscribe((EurDynamicYear: any[]) => {
+				EurDynamicYear.map((rate: any) => {
+					if (rate.Date.slice(8, 10) === `01`) {
+						this.eurDynamicYear.push(rate.Cur_OfficialRate);
+					}
+				});
+			});
 		this._banksService
 			.loadBelarusbankExchRatesBuySell()
 			.subscribe((Rates: any) => {
@@ -109,8 +165,6 @@ export class ExchangeRatesService implements OnInit {
 					+belarusBankRatesParse[0].RUB_in,
 					+belarusBankRatesParse[0].RUB_out
 				);
-				_banksService.banksRates.push(this.belarusbankRates);
-				// console.log(this.belarusbankRates);
 			});
 		this._banksService
 			.loadDabrabidExchRatesBuySell()
@@ -137,97 +191,56 @@ export class ExchangeRatesService implements OnInit {
 					+DabrabidExchRatesBuySell.root.filials.filial[4].rates
 						.value[2]['@attributes'].sale * 100
 				);
-				_banksService.banksRates.push(this.dabrabidRates);
-				// console.log(this.dabrabidRates);
 			});
 
-		// this._banksService
-		// 	.loadBAPBExchRatesBuySell()
-		// 	.subscribe((Rates: any) => {
-		// 		const parser: any = new DOMParser();
-		// 		const xml: any = parser.parseFromString(
-		// 			Rates.toString(),
-		// 			'text/xml'
-		// 		);
-		// 		const BAPBExchRatesBuySell: any = ngxXml2jsonService.xmlToJson(
-		// 			xml
-		// 		);
-		// 		console.log(BAPBExchRatesBuySell)
-		// 		this.BAPBRates.push(
-		// 			+BAPBExchRatesBuySell.DailyExRates.Currency[3].RateBuy,
-		// 			+BAPBExchRatesBuySell.DailyExRates.Currency[3].RateSell,
-		// 			+BAPBExchRatesBuySell.DailyExRates.Currency[2].RateBuy,
-		// 			+BAPBExchRatesBuySell.DailyExRates.Currency[2].RateSell,
-		// 			+BAPBExchRatesBuySell.DailyExRates.Currency[6].RateBuy,
-		// 			+BAPBExchRatesBuySell.DailyExRates.Currency[6].RateSell
-		// 		);
-		// 		_banksService.banksRates.push(this.BAPBRates);
-		// 		// console.log(this.BAPBRates);
-		// 	});
+		this._banksService
+			.loadBAPBExchRatesBuySell()
+			.subscribe((Rates: any) => {
+				const parser: any = new DOMParser();
+				const xml: any = parser.parseFromString(
+					Rates.toString(),
+					'text/xml'
+				);
+				const BAPBExchRatesBuySell: any = ngxXml2jsonService.xmlToJson(
+					xml
+				);
+				this.BAPBRates.push(
+					+BAPBExchRatesBuySell.DailyExRates.Currency[8].ConvRate,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[9].ConvRate,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[20].ConvRate,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[21].ConvRate,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[16].ConvRate,
+					+BAPBExchRatesBuySell.DailyExRates.Currency[17].ConvRate
+				);
+			});
 
 		this._banksService
 			.loadAlfabankExchRatesBuySell()
 			.subscribe((Rates: any) => {
 				const AlfabankRatesParse: any = JSON.parse(Rates);
-				this.alfaRates.push(
-					AlfabankRatesParse.rates[5].sellRate,
-					AlfabankRatesParse.rates[5].buyRate,
-					AlfabankRatesParse.rates[4].sellRate,
-					AlfabankRatesParse.rates[4].buyRate,
-					AlfabankRatesParse.rates[3].sellRate,
-					AlfabankRatesParse.rates[3].buyRate
-				);
-				_banksService.banksRates.push(this.alfaRates);
-				// console.log(this.alfaRates);
-				// console.log(_banksService.banksRates);
+				AlfabankRatesParse.rates.map((e: any) => {
+					if (e.sellCode === 840 && e.buyCode === 933) {
+						this.alfaRates.splice(0, 0, e.sellRate, e.buyRate);
+					} else if (e.sellCode === 978 && e.buyCode === 933) {
+						this.alfaRates.splice(2, 0, e.sellRate, e.buyRate);
+					} else if (e.sellCode === 643 && e.buyCode === 933) {
+						this.alfaRates.splice(4, 0, e.sellRate, e.buyRate);
+					}
+				});
 			});
-		this.eurBuyRates.push(
-			this.belarusbankRates[0],
-			this.dabrabidRates[0],
-			this.BAPBRates[0],
-			this.alfaRates[0]
-		);
-		this.eurSellRates.push(
-			this.belarusbankRates[1],
-			this.dabrabidRates[1],
-			this.BAPBRates[1],
-			this.alfaRates[2]
-		);
-		this.usdBuyRates.push(
-			this.belarusbankRates[2],
-			this.dabrabidRates[2],
-			this.BAPBRates[2],
-			this.alfaRates[2]
-		);
-		this.usdSellRates.push(
-			this.belarusbankRates[3],
-			this.dabrabidRates[3],
-			this.BAPBRates[3],
-			this.alfaRates[3]
-		);
-		this.rubBuyRates.push(
-			this.belarusbankRates[4],
-			this.dabrabidRates[4],
-			this.BAPBRates[4],
-			this.alfaRates[4]
-		);
-		this.rubSellRates.push(
-			this.belarusbankRates[5],
-			this.dabrabidRates[5],
-			this.BAPBRates[5],
-			this.alfaRates[5]
-		);
-	}
-
-	public ngOnInit(): void {
-		this._banksService.banksRates = [];
+		this._banksService.banksRates.push(this.alfaRates);
 		this._banksService.banksRates.push(this.belarusbankRates);
 		this._banksService.banksRates.push(this.dabrabidRates);
-		// this._banksService.banksRates.push(this.BAPBRates);
-		this._banksService.banksRates.push(this.alfaRates);
-		console.log(this._banksService.banksRates);
+		this._banksService.banksRates.push(this.BAPBRates);
 	}
 	public NBtoCB(): void {
-		this.isNBRB = !this.isNBRB;
+		if (!this.isNBRB) {
+			this.isNBRB = !this.isNBRB;
+		}
+	}
+	public CBtoNB(): void {
+		if (this.isNBRB) {
+			this.isNBRB = !this.isNBRB;
+		}
 	}
 }

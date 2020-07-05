@@ -48,13 +48,12 @@ export class BanksService {
 			}
 		);
 	}
-	////////////////////////////////////////////////////////////////////// убрать дату
 	public loadBAPBExchRatesBuySell(): Observable<any> {
 		const headers: any = new HttpHeaders({
 			'Access-Control-Allow-Origin': '*',
 		});
 		return this._httpClient.get(
-			'https://cors-anywhere.herokuapp.com/https://belapb.by/CashConvRatesDaily.php?ondate=06/26/2020',
+			'https://cors-anywhere.herokuapp.com/https://belapb.by/CashConvRatesDaily.php',
 			{
 				responseType: 'text',
 				headers,

@@ -7,6 +7,7 @@ import News from 'src/models/news';
 export class NewsService {
 	public belarusBankNews: any = [];
 	public BAPBNews: any = [];
+	public dabrabidNews: any = [];
 	public news: any[] = [];
 	public newsId: number = 0;
 	public currentPage: number = 1;
@@ -23,7 +24,6 @@ export class NewsService {
 				bbnews.class = 'belarusBank';
 			}
 			this.news.push(...this.belarusBankNews);
-			console.log(this.news[1].class === 'belarusBank');
 		});
 		this.loadBAPBNews().subscribe((BAPBNews: any) => {
 			this.BAPBNews = BAPBNews;
@@ -61,7 +61,6 @@ export class NewsService {
 					(e.id = this.newsId + 1), (this.newsId = this.newsId + 1)
 				)
 			);
-			console.log(this.news);
 		});
 	}
 

@@ -29,12 +29,24 @@ export class BanksConverterService {
 		public _exchangeRatesService: ExchangeRatesService,
 		public _dataService: DataService
 	) {}
-	public sellToBuy(): void {
-		this.banksBuy = !this.banksBuy;
-		this.valUsdBuySell = null;
-		this.valEurBuySell = null;
-		this.valRubBuySell = null;
-		this.valBynBuySell = null;
+	public buyToSell(): any {
+		if (!this.banksBuy) {
+			this.banksBuy = !this.banksBuy;
+			this.valUsdBuySell = null;
+			this.valEurBuySell = null;
+			this.valRubBuySell = null;
+			this.valBynBuySell = null;
+		}
+		this.converterCalc();
+	}
+	public sellToBuy(): any {
+		if (this.banksBuy) {
+			this.banksBuy = !this.banksBuy;
+			this.valUsdBuySell = null;
+			this.valEurBuySell = null;
+			this.valRubBuySell = null;
+			this.valBynBuySell = null;
+		}
 		this.converterCalc();
 	}
 	public converterCalc(): any {
@@ -62,11 +74,11 @@ export class BanksConverterService {
 				return e[5];
 			}
 		);
-		this.minUsdBuy = Math.min.apply(0, usdArrayBuy);
+		this.minUsdBuy = Math.max.apply(0, usdArrayBuy);
 		this.minUsdSell = Math.min.apply(null, usdArraySell);
-		this.minEurBuy = Math.min.apply(null, eurArrayBuy);
+		this.minEurBuy = Math.max.apply(null, eurArrayBuy);
 		this.minEurSell = Math.min.apply(null, eurArraySell);
-		this.minRubBuy = Math.min.apply(null, rubArrayBuy);
+		this.minRubBuy = Math.max.apply(null, rubArrayBuy);
 		this.minRubSell = Math.min.apply(null, rubArraySell);
 	}
 

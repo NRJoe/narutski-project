@@ -8,7 +8,40 @@
 		<a class="header__link nav__item" routerLink="/news"> Новости </a>
 		<a class="header__link nav__item" routerLink="/about"> О сайте </a>
 	</div>
+	<div class="header-burger">
+		<div
+			class="burger-menu"
+			[class.active]="active"
+			(click)="onBurgerClicked()"
+		>
+			<div class="burger-container">
+				<div class="burger-inner">
+					<div class="burger-inner-container" *ngIf="active">
+						<div class="header__link nav__item" routerLink="/rates">
+							Курсы валют
+						</div>
+						<div class="header__link nav__item" routerLink="/banks">
+							Все банки
+						</div>
+						<div
+							class="header__link nav__item"
+							routerLink="/converter"
+						>
+							Конвертер
+						</div>
+						<div class="header__link nav__item" routerLink="/news">
+							Новости
+						</div>
+						<div class="header__link nav__item" routerLink="/about">
+							О сайте
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 <div class="router-outlet-container">
 	<router-outlet></router-outlet>
 </div>

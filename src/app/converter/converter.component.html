@@ -15,79 +15,367 @@
 					Республики Беларусь на {{ this.todayDate }}
 				</div>
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">USD</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_nbConverterService.valUsd"
-						[(ngModel)]="_nbConverterService.valUsd"
-						(ngModelChange)="
-							_nbConverterService.converterUsd($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/us.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">
+							USD
+						</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_nbConverterService.valUsd"
+							[(ngModel)]="_nbConverterService.valUsd"
+							(ngModelChange)="
+								_nbConverterService.converterUsd($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetNbrb()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">EUR</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_nbConverterService.valEur"
-						[(ngModel)]="_nbConverterService.valEur"
-						(ngModelChange)="
-							_nbConverterService.converterEur($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/eu.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">EUR</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_nbConverterService.valEur"
+							[(ngModel)]="_nbConverterService.valEur"
+							(ngModelChange)="
+								_nbConverterService.converterEur($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetNbrb()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">BYN</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_nbConverterService.valByn"
-						[(ngModel)]="_nbConverterService.valByn"
-						(ngModelChange)="
-							_nbConverterService.converterByn($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/by.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">BYN</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_nbConverterService.valByn"
+							[(ngModel)]="_nbConverterService.valByn"
+							(ngModelChange)="
+								_nbConverterService.converterByn($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetNbrb()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">RUB</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_nbConverterService.valRub"
-						[(ngModel)]="_nbConverterService.valRub"
-						(ngModelChange)="
-							_nbConverterService.converterRub($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/ru.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">RUB</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_nbConverterService.valRub"
+							[(ngModel)]="_nbConverterService.valRub"
+							(ngModelChange)="
+								_nbConverterService.converterRub($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetNbrb()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
-
-				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">UAH</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_nbConverterService.valUah"
-						[(ngModel)]="_nbConverterService.valUah"
-						(ngModelChange)="
-							_nbConverterService.converterUah($event)
+				<div
+					*ngFor="
+						let item of _nbConverterService.arrOfCurrSet;
+						let i = index
+					"
+				>
+					<div
+						*ngIf="
+							_nbConverterService.arrOfCurrSet[i] ===
+							'UAH (украинская гривна)'
 						"
-					/>
+						class="converter__nbrb__item"
+					>
+						<div class="converter__nbrb__item-container">
+							<div class="converter__nbrb__item__img-container">
+								<img
+									src="assets/countries/ua.svg"
+									class="converter__nbrb__item__img"
+								/>
+							</div>
+							<div class="converter__nbrb__item__text">
+								UAH
+							</div>
+						</div>
+						<div class="converter__nbrb__item__input-container">
+							<input
+								class="converter__nbrb__item__input"
+								type="number"
+								value="_nbConverterService.valUah"
+								[(ngModel)]="_nbConverterService.valUah"
+								(ngModelChange)="
+									_nbConverterService.converterUah($event)
+								"
+							/>
+							<button
+								class="converter__nbrb__item__input__button"
+								(click)="resetNbrb()"
+							>
+								&#10006;
+							</button>
+						</div>
+					</div>
+					<div
+						*ngIf="
+							_nbConverterService.arrOfCurrSet[i] ===
+							'CNY (китайский юань)'
+						"
+						class="converter__nbrb__item"
+					>
+						<div class="converter__nbrb__item-container">
+							<div class="converter__nbrb__item__img-container">
+								<img
+									src="assets/countries/cn.svg"
+									class="converter__nbrb__item__img"
+								/>
+							</div>
+							<div class="converter__nbrb__item__text">
+								CNY
+							</div>
+						</div>
+						<div class="converter__nbrb__item__input-container">
+							<input
+								class="converter__nbrb__item__input"
+								type="number"
+								value="_nbConverterService.valCny"
+								[(ngModel)]="_nbConverterService.valCny"
+								(ngModelChange)="
+									_nbConverterService.converterCny($event)
+								"
+							/>
+							<button
+								class="converter__nbrb__item__input__button"
+								(click)="resetNbrb()"
+							>
+								&#10006;
+							</button>
+						</div>
+					</div>
+					<div
+						*ngIf="
+							_nbConverterService.arrOfCurrSet[i] ===
+							'GBP (английский фунт)'
+						"
+						class="converter__nbrb__item"
+					>
+						<div class="converter__nbrb__item-container">
+							<div class="converter__nbrb__item__img-container">
+								<img
+									src="assets/countries/gb.svg"
+									class="converter__nbrb__item__img"
+								/>
+							</div>
+							<div class="converter__nbrb__item__text">
+								GBP
+							</div>
+						</div>
+						<div class="converter__nbrb__item__input-container">
+							<input
+								class="converter__nbrb__item__input"
+								type="number"
+								value="_nbConverterService.valGbp"
+								[(ngModel)]="_nbConverterService.valGbp"
+								(ngModelChange)="
+									_nbConverterService.converterGbp($event)
+								"
+							/>
+							<button
+								class="converter__nbrb__item__input__button"
+								(click)="resetNbrb()"
+							>
+								&#10006;
+							</button>
+						</div>
+					</div>
+					<div
+						*ngIf="
+							_nbConverterService.arrOfCurrSet[i] ===
+							'JPY (японский йен)'
+						"
+						class="converter__nbrb__item"
+					>
+						<div class="converter__nbrb__item-container">
+							<div class="converter__nbrb__item__img-container">
+								<img
+									src="assets/countries/jp.svg"
+									class="converter__nbrb__item__img"
+								/>
+							</div>
+							<div class="converter__nbrb__item__text">
+								JPY
+							</div>
+						</div>
+						<div class="converter__nbrb__item__input-container">
+							<input
+								class="converter__nbrb__item__input"
+								type="number"
+								value="_nbConverterService.valJpy"
+								[(ngModel)]="_nbConverterService.valJpy"
+								(ngModelChange)="
+									_nbConverterService.converterJpy($event)
+								"
+							/>
+							<button
+								class="converter__nbrb__item__input__button"
+								(click)="resetNbrb()"
+							>
+								&#10006;
+							</button>
+						</div>
+					</div>
+					<div
+						*ngIf="
+							_nbConverterService.arrOfCurrSet[i] ===
+							'PLN (польский злотый)'
+						"
+						class="converter__nbrb__item"
+					>
+						<div class="converter__nbrb__item-container">
+							<div class="converter__nbrb__item__img-container">
+								<img
+									src="assets/countries/pl.svg"
+									class="converter__nbrb__item__img"
+								/>
+							</div>
+							<div class="converter__nbrb__item__text">
+								PLN
+							</div>
+						</div>
+						<div class="converter__nbrb__item__input-container">
+							<input
+								class="converter__nbrb__item__input"
+								type="number"
+								value="_nbConverterService.valPln"
+								[(ngModel)]="_nbConverterService.valPln"
+								(ngModelChange)="
+									_nbConverterService.converterPln($event)
+								"
+							/>
+							<button
+								class="converter__nbrb__item__input__button"
+								(click)="resetNbrb()"
+							>
+								&#10006;
+							</button>
+						</div>
+					</div>
+					<div
+						*ngIf="
+							_nbConverterService.arrOfCurrSet[i] ===
+							'KZT (казахстанский тенге)'
+						"
+						class="converter__nbrb__item"
+					>
+						<div class="converter__nbrb__item-container">
+							<div class="converter__nbrb__item__img-container">
+								<img
+									src="assets/countries/kz.svg"
+									class="converter__nbrb__item__img"
+								/>
+							</div>
+							<div class="converter__nbrb__item__text">
+								KZT
+							</div>
+						</div>
+						<div class="converter__nbrb__item__input-container">
+							<input
+								class="converter__nbrb__item__input"
+								type="number"
+								value="_nbConverterService.valKzt"
+								[(ngModel)]="_nbConverterService.valKzt"
+								(ngModelChange)="
+									_nbConverterService.converterKzt($event)
+								"
+							/>
+							<button
+								class="converter__nbrb__item__input__button"
+								(click)="resetNbrb()"
+							>
+								&#10006;
+							</button>
+						</div>
+					</div>
 				</div>
+				<select
+					class="converter__nbrb__select"
+					name="my-select"
+					(change)="_nbConverterService.selectChange($event)"
+				>
+					<option
+						*ngFor="let curr of _nbConverterService.arrOfCurr"
+						class="converter__nbrb__select__option"
+					>
+						{{ curr.name }}
+					</option>
+				</select>
 			</div>
 			<div
 				class="converter__banks"
 				*ngIf="_banksConverterService.banksBuy"
 			>
-				По лучшему курсу в РБ <br>
+				По лучшему курсу в РБ <br />
 				(курс покупки)
 				<div class="converter__banks-buttons">
 					<button
 						class="converter__banks-buttons__buy-sale"
-						(click)="_banksConverterService.sellToBuy()"
+						(click)="_banksConverterService.buyToSell()"
 					>
 						Банк покупает
 					</button>
@@ -99,67 +387,131 @@
 					</button>
 				</div>
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">USD</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valUsdBuySell"
-						[(ngModel)]="_banksConverterService.valUsdBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterUsdBuy($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/us.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">USD</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valUsdBuySell"
+							[(ngModel)]="_banksConverterService.valUsdBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterUsdBuy($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">EUR</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valEurBuySell"
-						[(ngModel)]="_banksConverterService.valEurBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterEurBuy($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/eu.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">EUR</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valEurBuySell"
+							[(ngModel)]="_banksConverterService.valEurBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterEurBuy($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">BYN</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valBynBuySell"
-						[(ngModel)]="_banksConverterService.valBynBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterBynBuy($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/by.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">BYN</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valBynBuySell"
+							[(ngModel)]="_banksConverterService.valBynBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterBynBuy($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">RUB</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valRubBuySell"
-						[(ngModel)]="_banksConverterService.valRubBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterRubBuy($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/ru.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">RUB</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valRubBuySell"
+							[(ngModel)]="_banksConverterService.valRubBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterRubBuy($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 			</div>
 			<div
 				class="converter__banks"
 				*ngIf="!_banksConverterService.banksBuy"
 			>
-				По лучшему курсу в РБ <br>
+				По лучшему курсу в РБ <br />
 				(курс продажи)
 				<div class="converter__banks-buttons">
 					<button
 						class="converter__banks-buttons__buy-sale"
-						(click)="_banksConverterService.sellToBuy()"
+						(click)="_banksConverterService.buyToSell()"
 					>
 						Банк покупает
 					</button>
@@ -171,70 +523,121 @@
 					</button>
 				</div>
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">USD</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valUsdBuySell"
-						[(ngModel)]="_banksConverterService.valUsdBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterUsdSell($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/us.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">USD</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valUsdBuySell"
+							[(ngModel)]="_banksConverterService.valUsdBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterUsdSell($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">EUR</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valEurBuySell"
-						[(ngModel)]="_banksConverterService.valEurBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterEurSell($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/eu.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">EUR</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valEurBuySell"
+							[(ngModel)]="_banksConverterService.valEurBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterEurSell($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">BYN</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valBynBuySell"
-						[(ngModel)]="_banksConverterService.valBynBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterBynSell($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/by.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">BYN</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valBynBuySell"
+							[(ngModel)]="_banksConverterService.valBynBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterBynSell($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 
 				<div class="converter__nbrb__item">
-					<div class="converter__nbrb__item__text">RUB</div>
-					<input
-						class="converter__nbrb__item__input"
-						type="number"
-						value="_banksConverterService.valRubBuySell"
-						[(ngModel)]="_banksConverterService.valRubBuySell"
-						(ngModelChange)="
-							_banksConverterService.converterRubSell($event)
-						"
-					/>
+					<div class="converter__nbrb__item-container">
+						<div class="converter__nbrb__item__img-container">
+							<img
+								src="assets/countries/ru.svg"
+								class="converter__nbrb__item__img"
+							/>
+						</div>
+						<div class="converter__nbrb__item__text">RUB</div>
+					</div>
+					<div class="converter__nbrb__item__input-container">
+						<input
+							class="converter__nbrb__item__input"
+							type="number"
+							value="_banksConverterService.valRubBuySell"
+							[(ngModel)]="_banksConverterService.valRubBuySell"
+							(ngModelChange)="
+								_banksConverterService.converterRubSell($event)
+							"
+						/>
+						<button
+							class="converter__nbrb__item__input__button"
+							(click)="resetBanks()"
+						>
+							&#10006;
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- <div class="converter__top-requests">
-			Популярные запросы
-			<div class="converter__top-requests-container">
-				<a href="/converter/usd-rub"> Доллар США к российскому рублю</a>
-				<a href="/converter/usd-byn">
-					Доллар США к белорусскому рублю</a
-				>
-				<a href="/converter/usd-eur"> Доллар США к евро</a>
-				<a href="/converter/eur-rub"> Евро к российскому рублю</a>
-				<a href="/converter/eur-byn"> Евро к белорусскому рублю</a>
-			</div>
-		</div> -->
 	</div>
 </div>

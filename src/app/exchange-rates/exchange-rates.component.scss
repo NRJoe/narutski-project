@@ -7,7 +7,7 @@
 		margin-top: 15px;
 		width: 100%;
 		.exch-head {
-			font-size: 25px;
+			font-size: 35px;
 			font-weight: 700;
 			margin: 10px auto;
 			text-align: center;
@@ -34,6 +34,11 @@
 				text-transform: uppercase;
 				font-size: 13px;
 				font-weight: 700;
+				outline: 0;
+			}
+			.exch-rates-trigger__button:hover,
+			.exch-rates-trigger__button:focus {
+				background-color: rgb(225, 252, 225);
 			}
 		}
 		.exch-rates-list {
@@ -48,6 +53,7 @@
 				user-select: none;
 				.exch-rates-list__cell {
 					width: 20%;
+					font-size: 22px;
 				}
 				&-head {
 					background-color: rgb(225, 252, 225);
@@ -86,23 +92,24 @@
 		@include flex;
 		flex-direction: row;
 		background-color: rgb(225, 252, 225);
-		.exch-rates-type-bank {
+		.exch-rates-type__bank {
 			width: 40%;
+			font-size: 22px;
 			text-align: center;
 		}
 		.exch-rates-type-rates {
 			width: 20%;
 			text-align: center;
-			.exch-rates-type-currency {
+			.exch-rates-type__currency {
 				width: 100%;
 			}
 			.exch-rates-type-rates-container {
 				@include flex;
 				flex-direction: row;
-				.exch-rates-type-buy {
+				.exch-rates-type__buy {
 					width: 50%;
 				}
-				.exch-rates-type-sell {
+				.exch-rates-type__sell {
 					width: 50%;
 				}
 			}
@@ -126,10 +133,11 @@
 				@include flex;
 				flex-direction: row;
 				justify-content: space-evenly;
-				.exch-rates-banks-list-img {
-					width: 70px;
+				.exch-rates-banks-list__img {
+					width: 80px;
 				}
-				.exch-rates-banks-list-name {
+				.exch-rates-banks-list__name {
+					font-size: 22px;
 					width: 70%;
 				}
 			}
@@ -154,10 +162,183 @@
 				.exch-rates-banks-rates-rate {
 					width: 20%;
 					text-align: center;
+					font-size: 22px;
 				}
 			}
-			.exch-rates-banks-rates2:hover {
+			.exch-rates-banks-rates2:hover,
+			.exch-rates-banks-rates2:focus {
 				background-color: rgb(225, 252, 225);
+			}
+		}
+	}
+}
+
+@media all and (max-width: 980px) {
+	.exch {
+		width: 90%;
+		margin: 0 auto;
+
+		&-container {
+			margin-top: 15px;
+			width: 100%;
+		}
+		.exch-rates {
+			.exch-rates-list {
+				width: 100%;
+				margin-top: 15px;
+				border-collapse: collapse;
+				.exch-rates-list__row {
+					margin: 25px;
+					height: 50px;
+					border-bottom: 1px solid green;
+					width: 100%;
+					user-select: none;
+					.exch-rates-list__cell-name {
+						width: 30%;
+					}
+					.exch-rates-list__cell-exch-today {
+						width: 30%;
+					}
+					.exch-rates-list__cell-code {
+						width: 20%;
+					}
+					.exch-rates-list__cell-amount {
+						width: 20%;
+					}
+				}
+			}
+		}
+	}
+}
+@media all and (max-width: 780px) {
+	.exch-rates-banks-list__img {
+		display: none;
+	}
+	.exch {
+		.exch-container {
+			.exch-rates {
+				.exch-rates-banks {
+					.exch-rates-banks-head {
+						width: 100%;
+						.exch-rates-type__bank {
+							width: 20%;
+						}
+						.exch-rates-type-rates {
+							width: 27%;
+						}
+					}
+					.exch-rates-banks-container {
+						width: 100%;
+
+						.exch-rates-banks-list-container {
+							width: 19%;
+
+							.exch-rates-banks-list {
+								.exch-rates-banks-list__name {
+									font-size: 12px;
+									width: 100%;
+									margin: 0;
+									word-break: break-all;
+								}
+							}
+						}
+						.exch-rates-banks-rates {
+							width: 80%;
+
+							.exch-rates-banks-rates2 {
+								.exch-rates-banks-rates-rate {
+									width: 20%;
+									text-align: center;
+									font-size: 16px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media all and (max-width: 500px) {
+	.exch {
+		.exch-container {
+			.exch-rates {
+				.exch-rates-banks {
+					.exch-rates-banks-head {
+						.exch-rates-type__bank {
+							font-size: 15px;
+						}
+						.exch-rates-type-rates {
+							font-size: 12px;
+							width: 27%;
+						}
+					}
+					.exch-rates-banks-container {
+						width: 100%;
+
+						.exch-rates-banks-list-container {
+							width: 19%;
+
+							.exch-rates-banks-list {
+								.exch-rates-banks-list__img {
+									display: inline;
+								}
+								.exch-rates-banks-list__name {
+									display: none;
+								}
+							}
+						}
+						.exch-rates-banks-rates {
+							width: 80%;
+
+							.exch-rates-banks-rates2 {
+								.exch-rates-banks-rates-rate {
+									width: 20%;
+									text-align: center;
+									font-size: 13px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.exch {
+		width: 100%;
+		margin: 0 auto;
+
+		&-container {
+			margin-top: 15px;
+			width: 100%;
+		}
+		.exch-rates {
+			.exch-rates-list {
+				width: 100%;
+				margin-top: 15px;
+				border-collapse: collapse;
+				.exch-rates-list__row {
+					margin: 25px;
+					height: 50px;
+					border-bottom: 1px solid green;
+					width: 100%;
+					user-select: none;
+					.exch-rates-list__cell {
+						font-size: 15px;
+					}
+					.exch-rates-list__cell-name {
+						width: 40%;
+					}
+					.exch-rates-list__cell-exch-today {
+						width: 40%;
+					}
+					.exch-rates-list__cell-code {
+						display: none;
+					}
+					.exch-rates-list__cell-amount {
+						width: 20%;
+					}
+				}
 			}
 		}
 	}

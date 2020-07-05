@@ -14,7 +14,7 @@
 				</button>
 				<button
 					class="exch-rates-trigger__button"
-					(click)="_exchRatesService.NBtoCB()"
+					(click)="_exchRatesService.CBtoNB()"
 				>
 					Банки
 				</button>
@@ -74,44 +74,44 @@
 
 			<div class="exch-rates-banks" *ngIf="!_exchRatesService.isNBRB">
 				<div class="exch-rates-banks-head">
-					<div class="exch-rates-type-bank">
+					<div class="exch-rates-type__bank">
 						Банк
 					</div>
 					<div class="exch-rates-type-rates">
-						<div class="exch-rates-type-currency">
+						<div class="exch-rates-type__currency">
 							USD
 						</div>
 						<div class="exch-rates-type-rates-container">
-							<div class="exch-rates-type-buy">
+							<div class="exch-rates-type__buy">
 								Покупка
 							</div>
-							<div class="exch-rates-type-sell">
+							<div class="exch-rates-type__sell">
 								Продажа
 							</div>
 						</div>
 					</div>
 					<div class="exch-rates-type-rates">
-						<div class="exch-rates-type-currency">
+						<div class="exch-rates-type__currency">
 							EUR
 						</div>
 						<div class="exch-rates-type-rates-container">
-							<div class="exch-rates-type-buy">
+							<div class="exch-rates-type__buy">
 								Покупка
 							</div>
-							<div class="exch-rates-type-sell">
+							<div class="exch-rates-type__sell">
 								Продажа
 							</div>
 						</div>
 					</div>
 					<div class="exch-rates-type-rates">
-						<div class="exch-rates-type-currency">
+						<div class="exch-rates-type__currency">
 							RUB
 						</div>
 						<div class="exch-rates-type-rates-container">
-							<div class="exch-rates-type-buy">
+							<div class="exch-rates-type__buy">
 								Покупка
 							</div>
-							<div class="exch-rates-type-sell">
+							<div class="exch-rates-type__sell">
 								Продажа
 							</div>
 						</div>
@@ -127,10 +127,10 @@
 							"
 						>
 							<img
-								class="exch-rates-banks-list-img"
+								class="exch-rates-banks-list__img"
 								src="{{ bank.pict }}"
 							/>
-							<div class="exch-rates-banks-list-name">
+							<div class="exch-rates-banks-list__name">
 								{{ bank.name }}
 							</div>
 						</div>

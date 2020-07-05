@@ -21,6 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ExchangeRatesService } from './services/exchange-rates.service';
 import { NbConverterService } from './services/nb-converter.service';
 import { BanksConverterService } from './services/banks-converter.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -42,6 +43,8 @@ import { BanksConverterService } from './services/banks-converter.service';
 		ReactiveFormsModule,
 		ChartsModule,
 		NgxPaginationModule,
+		ReactiveFormsModule,
+		NoopAnimationsModule,
 	],
 	providers: [
 		DataService,

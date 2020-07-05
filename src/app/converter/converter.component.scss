@@ -10,29 +10,34 @@
 }
 
 .converter__info {
+	margin: 0 auto;
+	width: 75%;
 	font-size: 20px;
+	height: 100px;
 	text-align: center;
 }
 
 .converter__converters {
 	@include flex;
-	justify-content: space-around;
-	height: 450px;
-
+	justify-content: space-evenly;
+	align-items: flex-start;
+	height: 100%;
+	margin-top: 30px;
+	margin-bottom: 40px;
 	.converter__nbrb,
 	.converter__banks {
-		width: 400px;
-		height: 350px;
+		width: 600px;
 		font-size: 30px;
 		text-align: center;
+		line-height: 35px;
 		padding: 10px;
 		background-color: rgb(225, 252, 225);
 		border-radius: 3px;
-
 		.converter__nbrb__descr {
 			height: 80px;
 			margin-top: 15px;
-			font-size: 15px;
+			font-size: 20px;
+			line-height: 30px;
 			text-align: center;
 		}
 	}
@@ -42,15 +47,20 @@
 	height: 80px;
 
 	&__buy-sale {
-        background-color: white;
+		background-color: white;
 		border: 0.5px solid rgb(197, 197, 197);
 		border-radius: 4px;
 		width: 50%;
-		height: 25px;
-        cursor: pointer;
-        text-transform: uppercase;
-        font-size: 13px;
-        font-weight: 700;
+		height: 45px;
+		cursor: pointer;
+		text-transform: uppercase;
+		font-size: 18px;
+		font-weight: 700;
+	}
+	&__buy-sale:hover,
+	&__buy-sale:focus {
+		background-color: rgb(137, 253, 137);
+		outline: 0;
 	}
 }
 
@@ -58,34 +68,246 @@
 	@include flex;
 	justify-content: space-evenly;
 	margin: 0 auto;
-	width: 400px;
-	margin-top: 15px;
-	&__text {
-		width: 110px;
-		margin-right: 20px;
-		font-size: 20px;
-		font-weight: bold;
-	}
+	width: 520px;
+	margin-top: 25px;
+	background-color: rgb(225, 252, 225);
 
-	&__input {
-		width: 500px;
-		padding: 4px;
-		border: 1px solid rgb(182, 182, 182);
+	.converter__nbrb__item-container {
+		@include flex;
+		flex-direction: row;
+		.converter__nbrb__item__img-container {
+			.converter__nbrb__item__img {
+				width: 30px;
+				height: 30px;
+				border-radius: 4px;
+			}
+		}
+		.converter__nbrb__item__text {
+			margin-left: 5px;
+			width: 50px;
+			margin-right: 20px;
+			font-size: 27px;
+			font-weight: bold;
+		}
+	}
+	.converter__nbrb__item__input-container {
+		@include flex;
+		justify-content: space-evenly;
+		height: 35px;
+		width: 350px;
+		border: 1px solid rgb(141, 141, 141);
 		border-radius: 3px;
+		background-color: white;
+		.converter__nbrb__item__input {
+			margin: 0;
+			height: 35px;
+			width: 300px;
+			border: none;
+			background-color: transparent;
+			outline: none;
+			font-size: 30px;
+		}
+		.converter__nbrb__item__input__button {
+			border: none;
+			background-color: transparent;
+			outline: none;
+			font-size: 25px;
+		}
 	}
 }
 
-.converter__top-requests {
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
-	margin-bottom: 15px;
-	&-container {
+.converter__nbrb__select {
+	margin-top: 20px;
+	height: 40px;
+	width: 350px;
+	border: 1px solid rgb(141, 141, 141);
+	border-radius: 3px;
+	background-color: white;
+	font-size: 25px;
+
+	.converter__nbrb__select__option {
+		font-size: 25px;
+	}
+}
+
+@media all and (max-width: 1650px) {
+	.converter {
+		width: 95%;
+		margin: 0 auto;
+		&-container {
+			margin-top: 15px;
+			width: 100%;
+			.converter__converters {
+				width: 100%;
+				.converter__nbrb,
+				.converter__banks {
+					width: 500px;
+					margin-bottom: 15px;
+				}
+			}
+		}
+	}
+	.converter__nbrb__item {
+		@include flex;
+		justify-content: space-evenly;
+		margin: 0 auto;
+		width: 420px;
+		margin-top: 25px;
+		background-color: rgb(225, 252, 225);
+		.converter__nbrb__item__input-container {
+			width: 300px;
+			.converter__nbrb__item__input {
+				width: 250px;
+				font-size: 25px;
+			}
+		}
+	}
+}
+
+@media all and (max-width: 1120px) {
+	.converter {
+		width: 85%;
+		height: 100%;
+		margin: 0 auto;
+		&-container {
+			margin-top: 15px;
+			width: 90%;
+			.converter__info {
+				width: 100%;
+				font-size: 13px;
+				text-align: center;
+			}
+		}
+	}
+
+	.converter__converters {
 		@include flex;
 		flex-direction: column;
-		flex-wrap: wrap;
-		height: 50px;
-		font-size: 14px;
-		font-weight: 100;
+		justify-content: flex-start;
+		align-items: center;
+		height: 100%;
+	}
+}
+@media all and (max-width: 600px) {
+	.converter {
+		width: 95%;
+		height: 100%;
+		margin: 0 auto;
+		&-container {
+			margin-top: 15px;
+			height: 100%;
+			width: 100%;
+
+			.converter__info {
+				width: 100%;
+				font-size: 13px;
+			}
+			.converter__converters {
+				@include flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+				height: 100%;
+
+				.converter__nbrb,
+				.converter__banks {
+					width: 80%;
+					font-size: 20px;
+					margin-bottom: 20px;
+					.converter__nbrb__descr {
+						font-size: 12px;
+					}
+					.converter__nbrb__item {
+						width: 100%;
+						.converter__nbrb__item__input-container {
+							font-size: 15px;
+							width: 60%;
+							.converter__nbrb__item__input {
+								font-size: 15px;
+							}
+						}
+					}
+					.converter__nbrb__select {
+						font-size: 15px;
+						.converter__nbrb__select__option {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media all and (max-width: 480px) {
+	.converter {
+		height: 100%;
+		.converter-container {
+			.converter__info {
+				height: 550px;
+				font-size: 13px;
+				height: 5%;
+				text-align: center;
+			}
+		}
+	}
+
+	.converter__converters {
+		@include flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		margin: 0 auto;
+		height: 110%;
+		width: 85%;
+		.converter__nbrb,
+		.converter__banks {
+			font-size: 17px;
+			width: 100%;
+			.converter__nbrb__descr {
+				font-size: 17px;
+			}
+		}
+	}
+
+	.converter__nbrb__item {
+		@include flex;
+		justify-content: center;
+		margin: 0 auto;
+		width: 90%;
+		margin-top: 15px;
+		.converter__nbrb__item-container {
+			@include flex;
+			flex-direction: row;
+			width: 20%;
+			.converter__nbrb__item__img-container {
+				.converter__nbrb__item__img {
+					width: 18px;
+					height: 18px;
+				}
+			}
+			.converter__nbrb__item__text {
+				font-size: 16px;
+			}
+		}
+		.converter__nbrb__item__input-container {
+			@include flex;
+			justify-content: space-evenly;
+			height: 25px;
+			width: 60%;
+			.converter__nbrb__item__input {
+				width: 80%;
+			}
+			.converter__nbrb__item__input__button {
+				font-size: 20px;
+			}
+		}
+	}
+	.converter__nbrb__select {
+		width: 80%;
+		.converter__nbrb__select__option {
+			font-size: 15px;
+		}
+	}
+	.converter__banks-buttons__buy-sale {
+		font-size: 10px;
 	}
 }

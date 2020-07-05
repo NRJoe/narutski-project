@@ -1,23 +1,59 @@
 <div class="exch-rates-chart-container">
-	<button
-		class="exch-rates-chart-trigger__button"
-		(click)="exchRatesDynamicUsd()"
-	>
-		Доллары
-	</button>
-	<button
-		class="exch-rates-chart-trigger__button"
-		(click)="exchRatesDynamicEur()"
-	>
-		Евро
-	</button>
-	<button
-		class="exch-rates-chart-trigger__button"
-		(click)="exchRatesDynamicRub()"
-	>
-		Российские рубли
-	</button>
+	<div class="exch-rates-chart-trigger">
+		<div class="exch-rates-chart-trigger-usd">
+			<div class="exch-rates-chart-trigger__button__curr">
+				Доллары
+			</div>
+			<button
+				class="exch-rates-chart-trigger__button"
+				(click)="exchRatesDynamicUsdYear()"
+			>
+				Год
+			</button>
+			<button
+				class="exch-rates-chart-trigger__button"
+				(click)="exchRatesDynamicUsd()"
+			>
+				Месяц
+			</button>
+		</div>
+		<div class="exch-rates-chart-trigger-eur">
+			<div class="exch-rates-chart-trigger__button__curr">
+				Евро
+			</div>
+			<button
+				class="exch-rates-chart-trigger__button"
+				(click)="exchRatesDynamicEurYear()"
+			>
+				Год
+			</button>
+			<button
+				class="exch-rates-chart-trigger__button"
+				(click)="exchRatesDynamicEur()"
+			>
+				Месяц
+			</button>
+		</div>
+		<div class="exch-rates-chart-trigger-rub">
+			<div class="exch-rates-chart-trigger__button__curr">
+				Российские рубли
+			</div>
+			<button
+				class="exch-rates-chart-trigger__button"
+				(click)="exchRatesDynamicRubYear()"
+			>
+				Год
+			</button>
+			<button
+				class="exch-rates-chart-trigger__button"
+				(click)="exchRatesDynamicRub()"
+			>
+				Месяц
+			</button>
+		</div>
+	</div>
 	<canvas
+		class="exch-rates-chart"
 		baseChart
 		[datasets]="lineChartData"
 		[labels]="lineChartLabels"

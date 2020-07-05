@@ -1,0 +1,26 @@
+@import "src/app/app.component";
+
+.error-container {
+	margin: 0 auto;
+	height: 850px;
+	@include flex;
+	justify-content: center;
+	.error-text {
+		@include flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		height: 50%;
+		padding: 5px;
+		background-color: rgb(225, 252, 225);
+		border-radius: 5px;
+		.error-text__head {
+			font-size: 40px;
+			font-weight: 900;
+			text-transform: uppercase;
+		}
+		.error-text__message {
+			font-size: 25px;
+			font-weight: 900;
+		}
+	}
+}
