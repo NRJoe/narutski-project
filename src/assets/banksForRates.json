@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,
+		"name": "ЗАО \"Альфа-Банк\"",
+		"pict": "assets/banks/alfabank.png"
+	},
+	{
+		"id": 2,
+		"name": "ОАО \"АСБ Беларусбанк\"",
+		"pict": "assets/banks/belarusbank.png"
+	},
+	{
+		"id": 3,
+		"name": "ОАО \"Банк Дабрабыт\"",
+		"pict": "assets/banks/Dabrabytlogo.png"
+	},
+	{
+		"id": 4,
+		"name": "ОАО \"Белагропромбанк\"",
+		"pict": "assets/banks/belagroprom.png"
+	}
+]

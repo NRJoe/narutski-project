@@ -1,45 +1,87 @@
 @import "src/app/app.component";
 .banks {
-    width: 65%;
-    margin: 0 auto;
+	width: 85%;
+	margin: 0 auto;
+	&-container {
+		margin: 0 auto;
 
-    &-container {
-        margin-top: 15px;
-        width: 100%;
-        .banks-head {
-            font-size: 25px;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-        .banks-list {
-            border-collapse: collapse;
-            .banks-list__row {
-                width: 100%;
-                &-head {
-                    background-color: rgb(225, 252, 225);
-                }
-            }
-        }
-    }
+		width: 80%;
+		.banks-head {
+			font-size: 25px;
+			font-weight: 700;
+			margin: 15px auto;
+			text-align: center;
+		}
+		.banks-list {
+			text-align: center;
+			border-collapse: collapse;
+			.banks-list__row {
+				margin: 25px;
+				height: 50px;
+				border-bottom: 1px solid green;
+				width: 100%;
+				user-select: none;
+
+				&-head {
+					background-color: rgb(225, 252, 225);
+				}
+			}
+			.banks-list__row:hover {
+				background-color: rgb(225, 252, 225);
+			}
+		}
+	}
 }
 
 .banks-list__cell {
-    &-name {
-        width: 20%;
-    }
-    &-reg {
-        width: 15%;
-    }
-    &-ceo {
-        width: 10%;
-    }
-    &-adress {
-        width: 20%;
-    }
-    &-tel {
-        width: 20%;
-    }
-    &-site {
-        width: 15%;
-    }
+	text-decoration: none;
+	margin-right: 25px;
+	font-size: 20px;
+	&-name {
+		width: 15%;
+		&__link {
+			color: black;
+			text-decoration: none;
+			border-bottom: dashed green 0.5px;
+		}
+	}
+	&-reg {
+		width: 10%;
+	}
+	&-ceo {
+		width: 10%;
+	}
+	&-adress {
+		width: 20%;
+	}
+	&-tel {
+		width: 20%;
+	}
+	&-site {
+		width: 15%;
+
+		&__link {
+			color: black;
+			text-decoration: none;
+			border-bottom: dashed green 0.5px;
+		}
+	}
+}
+
+@media all and (max-width: 1400px) {
+	.banks-list__cell {
+		font-size: 14px; }
+}
+
+@media all and (max-width: 1100px) {
+	.banks-list__cell-tel {
+		display: none;
+	}
+}
+
+@media all and (max-width: 780px) {
+	.banks-list__cell-tel,
+	.banks-list__cell-adress {
+		display: none;
+	}
 }

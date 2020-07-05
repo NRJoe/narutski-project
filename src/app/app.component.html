@@ -1,54 +1,79 @@
 <div class="header nav">
-    <div class="header-container">
-        <a class="header__link nav__item" routerLink="/rates"> Курсы валют </a>
-        <a class="header__link nav__item" routerLink="/banks"> Все банки </a>
-        <a class="header__link nav__item" routerLink="/converter">
-            Конвертер
-        </a>
-        <a class="header__link nav__item" routerLink="/news"> Новости </a>
-        <a class="header__link nav__item" routerLink="/about"> О сайте </a>
-    </div>
+	<div class="header-container">
+		<a class="header__link nav__item" routerLink="/rates"> Курсы валют </a>
+		<a class="header__link nav__item" routerLink="/banks"> Все банки </a>
+		<a class="header__link nav__item" routerLink="/converter">
+			Конвертер
+		</a>
+		<a class="header__link nav__item" routerLink="/news"> Новости </a>
+		<a class="header__link nav__item" routerLink="/about"> О сайте </a>
+	</div>
+	<div class="header-burger">
+		<div
+			class="burger-menu"
+			[class.active]="active"
+			(click)="onBurgerClicked()"
+		>
+			<div class="burger-container">
+				<div class="burger-inner">
+					<div class="burger-inner-container" *ngIf="active">
+						<div class="header__link nav__item" routerLink="/rates">
+							Курсы валют
+						</div>
+						<div class="header__link nav__item" routerLink="/banks">
+							Все банки
+						</div>
+						<div
+							class="header__link nav__item"
+							routerLink="/converter"
+						>
+							Конвертер
+						</div>
+						<div class="header__link nav__item" routerLink="/news">
+							Новости
+						</div>
+						<div class="header__link nav__item" routerLink="/about">
+							О сайте
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
 <div class="router-outlet-container">
-    <router-outlet></router-outlet>
+	<router-outlet></router-outlet>
 </div>
 <div class="footer nav">
-    <div class="footer-container">
-        <a
-            class="footer__link nav__item"
-            href="https://facebook.com"
-            target="_blank"
-        >
-            <img src="src\assets\social\facebook.png" alt="11" />
-        </a>
-        <!--  width: 512px; height: 512px;
-    background: url('css_sprites.png') -10px -10px; -->
-        <a
-            class="footer__link nav__item"
-            href="https://twitter.com"
-            target="_blank"
-        >
-            <img src="src\assets\social\twitter.png" alt="11" />
-        </a>
-        <!--   width: 512px; height: 512px;
-    background: url('css_sprites.png') -542px -10px; -->
-        <a
-            class="footer__link nav__item"
-            href="https://youtube.com"
-            target="_blank"
-        >
-            <img src="src\assets\social\youtube.png" alt="11" />
-        </a>
-        <!--  width: 512px; height: 512px;
-    background: url('css_sprites.png') -10px -542px; -->
-        <a
-            class="footer__link nav__item"
-            href="https://instagram.com"
-            target="_blank"
-        >
-            <img src="src\assets\social\insta.png" alt="11" />
-        </a>
-        <!--  width: 512px; height: 512px;
-    background: url('css_sprites.png') -542px -542px;-->
-    </div>
+	<div class="footer-container">
+		<a
+			class="footer__link nav__item"
+			href="https://facebook.com"
+			target="_blank"
+		>
+			<img src="assets\social\facebook.png" alt="Facebook" />
+		</a>
+		<a
+			class="footer__link nav__item"
+			href="https://twitter.com"
+			target="_blank"
+		>
+			<img src="assets\social\twitter.png" alt="Twitter" />
+		</a>
+		<a
+			class="footer__link nav__item"
+			href="https://youtube.com"
+			target="_blank"
+		>
+			<img src="assets\social\youtube.png" alt="Youtube" />
+		</a>
+		<a
+			class="footer__link nav__item"
+			href="https://instagram.com"
+			target="_blank"
+		>
+			<img src="assets\social\insta.png" alt="Insta" />
+		</a>
+	</div>
 </div>

@@ -1,0 +1,75 @@
+@import "src/app/app.component";
+
+.banks-item {
+	width: 65%;
+	margin: 0 auto;
+	&-container {
+		margin: 15px 15px;
+		width: 100%;
+		.banks-item-spec {
+			@include flex;
+			flex-direction: column;
+			height: 700px;
+
+			.banks-item-spec__type {
+				padding-top: 12px;
+				height: 50px;
+				background-color: rgb(225, 252, 225);
+				width: 100%;
+				text-align: center;
+				font-size: 30px;
+				font-weight: 500;
+			}
+			.banks-item-spec__content {
+				padding-top: 15px;
+				height: 70px;
+				font-size: 30px;
+				margin-top: 5px;
+				.banks-item-spec__content-id {
+					color: black;
+					text-decoration: none;
+					border-bottom: dashed green 0.5px;
+				}
+				.banks-item-spec__content__img {
+					width: 300px;
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width: 868px) {
+	.banks-item {
+		width: 85%;
+		margin: 0 auto;
+		&-container {
+			margin: 15px 0;
+
+			width: 100%;
+			.banks-item-spec {
+				@include flex;
+				flex-direction: column;
+				height: 700px;
+
+				.banks-item-spec__type {
+					font-size: 20px;
+				}
+				.banks-item-spec__content {
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width: 480px) {
+	.banks-item {
+		width: 95%;
+		margin: 0 auto;
+		&-container {
+			margin: 15px 0;
+
+			width: 100%;
+		}
+	}
+}

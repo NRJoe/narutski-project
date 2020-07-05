@@ -1,0 +1,24 @@
+@import "src/app/app.component";
+
+.news-item {
+	width: 65%;
+	height: 100%;
+	margin: 10px auto;
+	@include flex;
+	flex-direction: column;
+	&__head {
+		font-size: 25px;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	&__pict {
+		margin-top: 20px;
+	}
+	&__text {
+		margin: 40px 0px;
+		font-size: 20px;
+		text-indent: 20px;
+		text-align: justify;
+	}
+}
