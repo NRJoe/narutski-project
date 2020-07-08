@@ -15,7 +15,7 @@
 		.banks-list {
 			text-align: center;
 			border-collapse: collapse;
-			.banks-list__row {
+			&__row {
 				margin: 25px;
 				height: 50px;
 				border-bottom: 1px solid green;
@@ -27,7 +27,7 @@
 				}
 			}
 			.banks-list__row:hover {
-				background-color: rgb(161, 161, 161);
+				background-color: $mainBackgroundcolor;
 			}
 		}
 	}
@@ -81,6 +81,13 @@
 }
 
 @media all and (max-width: 780px) {
+	.banks {
+		width: 95%;
+		&-container {
+			margin: 0 auto;
+			width: 100%;
+		}
+	}
 	.banks-list__cell-tel,
 	.banks-list__cell-adress {
 		display: none;

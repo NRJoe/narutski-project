@@ -1,5 +1,25 @@
 <div class="news">
 	<div class="news-container">
+		<div class="news-triggers">
+			<button
+				class="news-triggers__button"
+				(click)="_newsService.newsFilterAll()"
+			>
+				Все новости
+			</button>
+			<button
+				class="news-triggers__button"
+				(click)="_newsService.newsFilterBAPB()"
+			>
+				БелАгроПромБанк
+			</button>
+			<button
+				class="news-triggers__button"
+				(click)="_newsService.newsFilterBelarusbank()"
+			>
+				Беларусбанк
+			</button>
+		</div>
 		<ul class="news-container-list">
 			<li
 				class="news-container-list__item"
@@ -13,36 +33,43 @@
 					let i = index
 				"
 			>
-				<div
-					class="news-container-list__item-type"
-					*ngIf="
-						this._newsService.news[i].class === 'belAgroPromBank'
-					"
-				>
-					<div class="news-container-list__item-type__text">
-						БелАгроПромБанк
-					</div>
-				</div>
-				<div
-					class="news-container-list__item-type"
-					*ngIf="this._newsService.news[i].class === 'belarusBank'"
-				>
-					<div class="news-container-list__item-type__text">
-						Беларусбанк
-					</div>
-				</div>
 				<a
 					class="news-container-list__item-link"
-					[routerLink]="['/news', item.id]"
+					[routerLink]="['/news', i + 1]"
 				>
-					<div class="news-container-list__item__name">
-						{{ item.name_ru }}
-					</div>
 					<div class="news-container-list__item__pict">
 						<img
 							class="news-container-list__item__pict__img"
 							src="{{ item.img }}"
 						/>
+					</div>
+
+					<div class="news-container-list__item-container">
+						<div
+							class="news-container-list__item-type"
+							*ngIf="
+								this._newsService.news[i].class ===
+								'belAgroPromBank'
+							"
+						>
+							<div class="news-container-list__item-type__text">
+								БелАгроПромБанк
+							</div>
+						</div>
+						<div
+							class="news-container-list__item-type"
+							*ngIf="
+								this._newsService.news[i].class ===
+								'belarusBank'
+							"
+						>
+							<div class="news-container-list__item-type__text">
+								Беларусбанк
+							</div>
+						</div>
+						<div class="news-container-list__item__name">
+							{{ item.name_ru }}
+						</div>
 					</div>
 				</a>
 			</li>

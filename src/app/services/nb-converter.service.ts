@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class NbConverterService {
 	public valUsd: number;
-	public valEur: number;
+	public valEur: any;
 	public valRub: number;
 	public valByn: number;
 	public valUah: number;

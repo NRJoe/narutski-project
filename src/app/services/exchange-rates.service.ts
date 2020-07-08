@@ -204,14 +204,45 @@ export class ExchangeRatesService {
 				const BAPBExchRatesBuySell: any = ngxXml2jsonService.xmlToJson(
 					xml
 				);
-				this.BAPBRates.push(
-					+BAPBExchRatesBuySell.DailyExRates.Currency[8].ConvRate,
-					+BAPBExchRatesBuySell.DailyExRates.Currency[9].ConvRate,
-					+BAPBExchRatesBuySell.DailyExRates.Currency[20].ConvRate,
-					+BAPBExchRatesBuySell.DailyExRates.Currency[21].ConvRate,
-					+BAPBExchRatesBuySell.DailyExRates.Currency[16].ConvRate,
-					+BAPBExchRatesBuySell.DailyExRates.Currency[17].ConvRate
-				);
+				BAPBExchRatesBuySell.DailyExRates.Currency.map((e: any) => {
+					if (
+						e.BankId === '13081' &&
+						e.CurrSrc === 'RUB' &&
+						e.CurrTrg === 'BYN'
+					) {
+						this.BAPBRates.splice(4, 0, e.ConvRate);
+					} else if (
+						e.BankId === '13081' &&
+						e.CurrSrc === 'BYN' &&
+						e.CurrTrg === 'RUB'
+					) {
+						this.BAPBRates.splice(5, 0, e.ConvRate);
+					} else if (
+						e.BankId === '13081' &&
+						e.CurrSrc === 'BYN' &&
+						e.CurrTrg === 'USD'
+					) {
+						this.BAPBRates.splice(1, 0, e.ConvRate);
+					} else if (
+						e.BankId === '13081' &&
+						e.CurrSrc === 'USD' &&
+						e.CurrTrg === 'BYN'
+					) {
+						this.BAPBRates.splice(0, 0, e.ConvRate);
+					} else if (
+						e.BankId === '13081' &&
+						e.CurrSrc === 'BYN' &&
+						e.CurrTrg === 'EUR'
+					) {
+						this.BAPBRates.splice(2, 0, e.ConvRate);
+					} else if (
+						e.BankId === '13081' &&
+						e.CurrSrc === 'EUR' &&
+						e.CurrTrg === 'BYN'
+					) {
+						this.BAPBRates.splice(3, 0, e.ConvRate);
+					}
+				});
 			});
 
 		this._banksService

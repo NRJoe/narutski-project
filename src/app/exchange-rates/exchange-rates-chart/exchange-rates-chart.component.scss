@@ -4,14 +4,13 @@
 	width: 65%;
 	margin: 0 auto;
 	margin-top: 25px;
-
 	.exch-rates-chart-trigger {
 		@include flex;
 		flex-direction: row;
 		width: 100%;
-		.exch-rates-chart-trigger-usd,
-		.exch-rates-chart-trigger-eur,
-		.exch-rates-chart-trigger-rub {
+		&-usd,
+		&-eur,
+		&-rub {
 			@include flex;
 			flex-direction: column;
 			width: 33%;
@@ -40,7 +39,6 @@
 			}
 		}
 	}
-
 	.exch-rates-chart {
 		margin: 15px 0px;
 	}
@@ -54,11 +52,10 @@
 
 @media all and (max-width: 600px) {
 	.exch-rates-chart-container {
-		width: 90%;
 		.exch-rates-chart-trigger {
-			.exch-rates-chart-trigger-rub,
-			.exch-rates-chart-trigger-eur,
-			.exch-rates-chart-trigger-usd {
+			&-rub,
+			&-eur,
+			&-usd {
 				text-align: center;
 				.exch-rates-chart-trigger__button {
 					font-size: 10px;

@@ -2,6 +2,7 @@ $burgerWidth: 29px;
 $burgerBarHeight: 2px;
 $burgerBarColor: #333;
 $mainBackgroundcolor: rgb(225, 252, 225);
+$FocusBackgroundcolor: rgb(137, 253, 137);
 
 @mixin border {
 	border: none;
@@ -52,16 +53,35 @@ $mainBackgroundcolor: rgb(225, 252, 225);
 		}
 		.header__link:hover,
 		.header__link:focus {
-			background-color: rgb(137, 253, 137);
+			background-color: $FocusBackgroundcolor;
 			outline: 0;
 		}
 	}
-
+}
+.footer {
+	@include flex;
+	justify-content: space-evenly;
+	.footer-text-container {
+		width: 45%;
+		@include flex;
+		justify-content: center;
+		.footer-text {
+			font-size: 17px;
+			font-weight: 900;
+			user-select: none;
+			align-items: center;
+		}
+	}
 	.footer-container {
 		@include flex;
+		align-items: center;
 		justify-content: space-around;
-		width: 50%;
+		width: 45%;
 		margin: 0 auto;
+		.nav__item {
+			@include flex;
+			align-items: center;
+		}
 	}
 }
 
@@ -70,6 +90,13 @@ $mainBackgroundcolor: rgb(225, 252, 225);
 		.header-container {
 			.header__link {
 				font-size: 20px;
+			}
+		}
+	}
+	.footer {
+		.footer-text-container {
+			.footer-text {
+				font-size: 9px;
 			}
 		}
 	}
@@ -101,7 +128,7 @@ $mainBackgroundcolor: rgb(225, 252, 225);
 						.burger-inner-container {
 							position: fixed;
 							overflow: hidden;
-							transform: translate(-90%);
+							transform: translate(-90.5%);
 							width: 100%;
 							height: 1024px;
 							margin-top: 15px;

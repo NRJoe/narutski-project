@@ -63,7 +63,6 @@ export class NewsService {
 			);
 		});
 	}
-
 	public loadBelarusBankNews(): Observable<any> {
 		return this._httpClient.get(
 			'https://cors-anywhere.herokuapp.com/https://belarusbank.by/api/news_info'
@@ -80,5 +79,24 @@ export class NewsService {
 				headers,
 			}
 		);
+	}
+	public newsFilterAll(): any {
+		this.news = [...this.belarusBankNews, ...this.BAPBNews.NEWSLIST.NEWS];
+		this.news.sort((a: any, b: any) => {
+			return Date.parse(b.start_date) - Date.parse(a.start_date);
+		});
+	}
+	public newsFilterBAPB(): any {
+		if (this.news !== this.BAPBNews) {
+			this.news = [...this.BAPBNews.NEWSLIST.NEWS];
+			this.news.sort((a: any, b: any) => {
+				return Date.parse(b.start_date) - Date.parse(a.start_date);
+			});
+		}
+	}
+	public newsFilterBelarusbank(): any {
+		if (this.news !== this.belarusBankNews) {
+			this.news = [...this.belarusBankNews];
+		}
 	}
 }

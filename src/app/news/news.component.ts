@@ -7,4 +7,5 @@ import { NewsService } from '../services/news.service';
 })
 export class NewsComponent {
 	constructor(public _newsService: NewsService) {}
+	
 }

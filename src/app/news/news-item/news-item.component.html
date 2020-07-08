@@ -1,7 +1,4 @@
 <div class="news-item">
-	<div class="news-item__head">
-		{{ _news.news[_news.newsId - 1].name_ru }}
-	</div>
 	<div class="news-item__pict">
 		<img
 			class="news-item__pict__img"
@@ -9,7 +6,12 @@
 			width="400px"
 		/>
 	</div>
-	<div class="news-item__text">
-		{{ _news.news[_news.newsId - 1].html_ru }}
+	<div class="news-item-container">
+		<div class="news-item__head">
+			{{ _news.news[_news.newsId - 1].name_ru }}
+		</div>
+		<div class="news-item__text">
+			{{ _news.news[_news.newsId - 1].html_ru }}
+		</div>
 	</div>
 </div>

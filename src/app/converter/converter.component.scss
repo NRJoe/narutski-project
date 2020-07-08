@@ -45,7 +45,6 @@
 .converter__banks-buttons {
 	margin-top: 15px;
 	height: 80px;
-
 	&__buy-sale {
 		background-color: white;
 		border: 0.5px solid rgb(197, 197, 197);
@@ -71,7 +70,6 @@
 	width: 520px;
 	margin-top: 25px;
 	background-color: $mainBackgroundcolor;
-
 	.converter__nbrb__item-container {
 		@include flex;
 		flex-direction: row;
@@ -115,7 +113,6 @@
 		}
 	}
 }
-
 .converter__nbrb__select {
 	margin-top: 20px;
 	height: 40px;
@@ -124,7 +121,6 @@
 	border-radius: 3px;
 	background-color: white;
 	font-size: 25px;
-
 	.converter__nbrb__select__option {
 		font-size: 25px;
 	}
